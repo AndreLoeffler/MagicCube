@@ -1,0 +1,7 @@
+parameters:
+#    binaerpiloten_magic.example.class: Binaerpiloten\MagicBundle\Example
+
+services:
+#    binaerpiloten_magic.example:
+#        class: %binaerpiloten_magic.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

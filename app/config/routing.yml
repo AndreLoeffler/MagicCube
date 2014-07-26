@@ -1,0 +1,4 @@
+binaerpiloten_magic:
+    resource: "@BinaerpilotenMagicBundle/Resources/config/routing.yml"
+    prefix:   /
+
