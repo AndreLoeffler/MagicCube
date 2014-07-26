@@ -1,0 +1,13 @@
+<li>
+	<div class="btn-group primary">
+		<button type="button" class="btn dropdown-toggle"
+			data-toggle="dropdown">
+			<span class="glyphicon glyphicon-chevron-left"></span> 
+			{{ app.user.username }}
+		</button>
+		<ul class="dropdown-menu pull-right" role="menu">
+			<li><a href="{{ path('user_show', {'id': app.user.id }) }}">Dein Profil</a></li>
+			<li><a href="{{ path('fos_user_security_logout',{ }) }}">Logout</a></li>
+		</ul>
+	</div>
+</li>

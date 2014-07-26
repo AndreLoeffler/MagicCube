@@ -1,0 +1,43 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block tplstyle %}
+
+{% endblock %}
+
+{% set self = (app.user.id == entity.id) %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-6">
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Lastlogin</th>
+                <td>{{ entity.lastLogin|date('d.m.Y') }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+	</div>
+</div>
+    
+	
+<ul class="record_actions">
+{% if self %}
+	<li><a href="{{ path('fos_user_profile_edit') }}">Daten ändern</a><br/></li>
+	<li><a href="{{ path('fos_user_change_password') }}">Passwort ändern</a></li>
+{% endif %}
+  <li><a href="{{ path('user') }}">Alle Spieler</a></li>
+</ul>
+{% endblock %}

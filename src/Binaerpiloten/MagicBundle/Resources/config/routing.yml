@@ -1,3 +1,7 @@
-binaerpiloten_magic_homepage:
-    pattern:  /hello/{name}
+home:
+    pattern:  /
     defaults: { _controller: BinaerpilotenMagicBundle:Default:index }
+    
+user:
+    resource: "@BinaerpilotenMagicBundle/Controller/UserController.php"
+    type: annotation    

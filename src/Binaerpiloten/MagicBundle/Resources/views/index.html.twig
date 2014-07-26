@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CubeDrafter</title> 
+	{% block stylesheets %}
+		<link href="{{ asset('bundles/binaerpilotenmagic/css/bootstrap.css') }}" rel="stylesheet">
+		<link href="{{ asset('bundles/binaerpilotenmagic/css/custom.css') }}" rel="stylesheet">
+		{% block tplstyle %}
+		{% endblock %}
+	{% endblock %} 
+	{% block javascript %}
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script	src="{{ asset('bundles/binaerpilotenmagic/js/bootstrap.min.js') }}"></script>
+		{% block tplscript %}
+		{% endblock %}
+	{% endblock %}
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="well">
+					{% block content %}
+						{% block fos_user_content %}
+						{% endblock %}
+					{% endblock %}
+				</div>
+			</div>
+			<div class="col-md-3 navigation">
+				<div class="well">
+					<nav>
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="{{ path('home') }}">Home</a></li>
+							{% if is_granted('ROLE_USER') %}
+								{# is the viewer logged in? #}
+								{% include "BinaerpilotenMagicBundle:Menu:user.html.twig" %}
+								{% include "BinaerpilotenMagicBundle:Menu:spiel.html.twig" %}
+							{% else %}
+								{# if not, present login-form #}
+								{% include "BinaerpilotenMagicBundle:Menu:login.html.twig" %}
+							{% endif %}
+							{% if is_granted('ROLE_ADMIN') %}
+								{# is he logged in and even admin? #}
+								{% include "BinaerpilotenMagicBundle:Menu:admin.html.twig" %}
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>

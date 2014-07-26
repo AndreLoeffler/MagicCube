@@ -1,14 +1,17 @@
-parameters:
-#    binaerpiloten_magic.example.class: Binaerpiloten\MagicBundle\Example
-
 services:
-#    binaerpiloten_magic.example:
-#        class: %binaerpiloten_magic.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
-
-services:
-    acme_user.registration.form.type:
+    magic_user.registration.form.type:
         class: Binaerpiloten\MagicBundle\Form\Type\RegistrationFormType
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: magic_user_registration }
+    magic_user.profile.form.type:
+        class: Binaerpiloten\MagicBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: magic_user_profile }
+            
+    binaerpiloten.twig.token_extension:
+        class: Binaerpiloten\MagicBundle\Twig\TokenExtension
+        arguments: [ @service_container ]
+        tags:
+            - { name: twig.extension } 
