@@ -5,3 +5,10 @@ services:
 #    binaerpiloten_magic.example:
 #        class: %binaerpiloten_magic.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    acme_user.registration.form.type:
+        class: Binaerpiloten\MagicBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: magic_user_registration }
