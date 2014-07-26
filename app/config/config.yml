@@ -74,4 +74,7 @@ fos_user:
     user_class: Binaerpiloten\MagicBundle\Entity\User
     registration:
         form:
-            type: magic_user_registration    
+            type: magic_user_registration  
+    profile:
+        form:
+            type: magic_user_profile
