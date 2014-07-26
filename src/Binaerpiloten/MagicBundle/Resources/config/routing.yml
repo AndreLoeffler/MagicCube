@@ -10,4 +10,7 @@ typ:
     type: annotation
 farbe:
     resource: "@BinaerpilotenMagicBundle/Controller/FarbeController.php"
+    type: annotation 
+stichwort:
+    resource: "@BinaerpilotenMagicBundle/Controller/StichwortController.php"
     type: annotation    
