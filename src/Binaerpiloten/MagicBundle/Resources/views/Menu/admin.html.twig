@@ -5,7 +5,32 @@
 			<span class="glyphicon glyphicon-chevron-left"></span> Admin
 		</button>
 		<ul class="dropdown-menu pull-right" role="menu">
-			<li><a>bla</a></li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Farbe
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('farbe') }}">Alle Farben</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('farbe_new') }}">Neue Farbe</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Typ
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('typ') }}">Alle Typen</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('typ_new') }}">Neuer Typ</a></li>
+					</ul>
+				</div>
+			</li>
 		</ul>
 	</div>
 </li>
