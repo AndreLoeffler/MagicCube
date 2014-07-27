@@ -54,7 +54,7 @@ class KarteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('karte_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('karte_new'));
         }
 
         return array(
