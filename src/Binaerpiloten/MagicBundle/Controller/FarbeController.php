@@ -23,7 +23,7 @@ class FarbeController extends Controller
      *
      * @Route("/", name="farbe")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Farbe:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class FarbeController extends Controller
      *
      * @Route("/", name="farbe_create")
      * @Method("POST")
-     * @Template("BinaerpilotenMagicBundle:Farbe:new.html.twig")
+     * @Template("BinaerpilotenMagicBundle:Karte/Farbe:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class FarbeController extends Controller
      *
      * @Route("/new", name="farbe_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Farbe:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class FarbeController extends Controller
      *
      * @Route("/{id}", name="farbe_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Farbe:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class FarbeController extends Controller
      *
      * @Route("/{id}/edit", name="farbe_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Farbe:edit.html.twig")
      */
     public function editAction($id)
     {
