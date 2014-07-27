@@ -23,7 +23,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/", name="seltenheit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/", name="seltenheit_create")
      * @Method("POST")
-     * @Template("BinaerpilotenMagicBundle:Seltenheit:new.html.twig")
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/new", name="seltenheit_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/{id}", name="seltenheit_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/{id}/edit", name="seltenheit_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -174,7 +174,7 @@ class SeltenheitController extends Controller
      *
      * @Route("/{id}", name="seltenheit_update")
      * @Method("PUT")
-     * @Template("BinaerpilotenMagicBundle:Seltenheit:edit.html.twig")
+     * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
