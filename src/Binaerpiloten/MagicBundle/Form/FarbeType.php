@@ -16,6 +16,7 @@ class FarbeType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('display')
         ;
     }
     

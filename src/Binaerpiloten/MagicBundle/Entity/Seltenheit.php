@@ -29,6 +29,13 @@ class Seltenheit
     private $name;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="display", type="string", length=255)
+     */
+    private $display;
+    
+    /**
      */
     private $karte_id;
 
@@ -107,5 +114,28 @@ class Seltenheit
     
     public function __toString() {
     	return $this->name;
+    }
+
+    /**
+     * Set display
+     *
+     * @param string $display
+     * @return Seltenheit
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return string 
+     */
+    public function getDisplay()
+    {
+        return $this->display;
     }
 }

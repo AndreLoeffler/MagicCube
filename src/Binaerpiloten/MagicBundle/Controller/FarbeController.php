@@ -193,7 +193,7 @@ class FarbeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('farbe_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('farbe'));
         }
 
         return array(

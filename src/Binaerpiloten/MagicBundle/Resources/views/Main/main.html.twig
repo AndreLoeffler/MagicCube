@@ -1,0 +1,94 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block tplscript %}
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Farbe', 'Anzahl'],
+          {% for k,v in farben %}
+	          ['{{ k }}',     {{ v.count }}],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Farben',
+          backgroundColor: 'transparent',
+          legend: {position: 'top'},
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'gray',
+          slices: {
+        	  	{% for k,v in farben %}
+					{{ v.slice }}: {color: '{{ v.color }}'},
+				{% endfor %}
+              }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('farben'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Farbe', 'Anzahl'],
+          {% for k,v in selten %}
+	          ['{{ k }}',     {{ v.count }}],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Seltenheiten',
+          backgroundColor: 'transparent',
+          legend: {position: 'top'},
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'gray',
+          slices: {
+        	  	{% for k,v in selten %}
+					{{ v.slice }}: {color: '{{ v.color }}'},
+				{% endfor %}
+              }
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('seltenheiten'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Farbe', 'Anzahl'],
+          {% for k,v in typen %}
+	          ['{{ k }}',     {{ v.count }}],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Typen',
+          backgroundColor: 'transparent',
+          legend: {position: 'top'},
+          pieSliceText: 'none',
+          pieSliceBorderColor: 'gray',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('typ'));
+        chart.draw(data, options);
+      }
+    </script>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div id="farben" class="col-md-6 well" style="height: 400px;"></div>
+		<div id="seltenheiten" class="col-md-6 well" style="height: 400px;"></div>
+	</div>
+	<div class="row">
+		<div id="typ" class="col-md-6 well" style="height: 400px;"></div>
+	</div>
+{% endblock %}

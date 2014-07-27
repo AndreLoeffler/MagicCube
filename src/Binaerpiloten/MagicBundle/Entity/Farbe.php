@@ -30,6 +30,13 @@ class Farbe
     private $name;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="display", type="string", length=255)
+     */
+    private $display;
+    
+    /**
 	 * @ORM\ManyToMany(targetEntity="Karte", mappedBy="farbe")
      */
     private $karte_id;
@@ -142,5 +149,28 @@ class Farbe
     public function getKarteId()
     {
         return $this->karte_id;
+    }
+
+    /**
+     * Set display
+     *
+     * @param string $display
+     * @return Farbe
+     */
+    public function setDisplay($display)
+    {
+        $this->display = $display;
+
+        return $this;
+    }
+
+    /**
+     * Get display
+     *
+     * @return string 
+     */
+    public function getDisplay()
+    {
+        return $this->display;
     }
 }

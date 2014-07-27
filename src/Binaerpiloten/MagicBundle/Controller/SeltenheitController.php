@@ -193,7 +193,7 @@ class SeltenheitController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('seltenheit_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('seltenheit'));
         }
 
         return array(

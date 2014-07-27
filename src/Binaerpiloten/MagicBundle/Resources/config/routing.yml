@@ -1,6 +1,6 @@
 home:
-    pattern:  /
-    defaults: { _controller: BinaerpilotenMagicBundle:Default:index }
+    resource: "@BinaerpilotenMagicBundle/Controller/DefaultController.php"
+    type: annotation
     
 user:
     resource: "@BinaerpilotenMagicBundle/Controller/UserController.php"

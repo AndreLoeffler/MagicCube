@@ -16,6 +16,7 @@ class SeltenheitType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('display')
         ;
     }
     
