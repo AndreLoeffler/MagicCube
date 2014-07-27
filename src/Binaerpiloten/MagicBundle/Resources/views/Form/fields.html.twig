@@ -1,0 +1,45 @@
+{% block integer_widget %}
+    {% set type = type|default('number') %}
+    {{ block('form_widget_simple') }}
+{% endblock integer_widget %}
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock form_widget_simple %}
+
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+
+    <script type='text/javascript'>
+			{{ globalDragDropJS('ol.'~id,'simple_with_animation')|raw }}
+		</script>
+
+		<style type="text/css">
+			{{ globalDragDropCSS('ol'~id)|raw }}
+		</style>
+    
+    
+    <ol class="list-group {{ id }}">
+    {% for child in form %}
+        <li class="list-group-item">{{ form_widget(child) }} {{ form_label(child) }}</li>
+    {% endfor %}
+    </ol>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
+
+{% block form_label %}
+{% spaceless %}
+    {% if label is not sameas(false) %}
+        {% if not compound %}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {% endif %}
+        {% if label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <span {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ label|trans({}, translation_domain) }}</span>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_label %}

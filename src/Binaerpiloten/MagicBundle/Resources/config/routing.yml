@@ -16,4 +16,7 @@ karte:
     type: annotation    
 seltenheit:
     resource: "@BinaerpilotenMagicBundle/Controller/SeltenheitController.php"
-    type: annotation        
+    type: annotation
+kartefilter:
+    resource: "@BinaerpilotenMagicBundle/Controller/KarteFilterController.php"
+    type: annotation    

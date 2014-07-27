@@ -1,0 +1,41 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% form_theme form 'BinaerpilotenMagicBundle:Form:fields.html.twig' %}
+
+{% block tplscript %}
+	<script	src="{{ asset('bundles/binaerpilotenmagic/js/jquery-sortable.js') }}"></script>
+	{% include "BinaerpilotenMagicBundle:Form:dragndrop.js.html.twig" %}
+{% endblock %}
+
+{% block content %}
+<h1>Filter creation</h1>
+{{ form_start(form) }}
+
+	<div>
+		{{ form_errors(form) }}
+		{{ form_errors(form.typ) }}
+	</div>
+	
+	<h2>Die Spieler</h2>
+	<div class="row">
+		<div class="col-md-6">
+	    <ol class="target list-group" style="min-height: 500px;">
+	    	<span class="list-group-item">Gewählte Filter</span>
+	    </ol>
+		</div>
+		
+		<div class="col-md-6">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#typ" data-toggle="tab">Typ</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="typ">
+					{{ form_widget(form.typ) }}
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{{ form_end(form) }}
+
+{% endblock %}

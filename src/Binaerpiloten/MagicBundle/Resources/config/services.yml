@@ -14,4 +14,14 @@ services:
         class: Binaerpiloten\MagicBundle\Twig\TokenExtension
         arguments: [ @service_container ]
         tags:
-            - { name: twig.extension } 
+            - { name: twig.extension }
+    binaerpiloten.twig.dragdropjs_extension:
+        class: Binaerpiloten\MagicBundle\Twig\DragDropJSExtension
+        arguments: [  ]
+        tags:
+            - { name: twig.extension }
+    binaerpiloten.twig.dragdropcss_extension:
+        class: Binaerpiloten\MagicBundle\Twig\DragDropCSSExtension
+        arguments: [  ]
+        tags:
+            - { name: twig.extension }
