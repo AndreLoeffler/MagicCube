@@ -3,13 +3,13 @@
 {% block content %}
     <h1>Karte list</h1>
 
-    <table class="records_list">
+    <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Anzahl</th>
                 <th>Typ</th>
+                <th>Farbe</th>
                 <th>Stichwort</th>
                 <th>Actions</th>
             </tr>
@@ -17,10 +17,23 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('karte_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
+                <td><a href="{{ path('karte_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.anzahl }}</td>
-                <td>{{ entity.typ }}</td>
+                <td>
+                	<ul>
+                		{% for t in entity.typ %}
+                			<li>{{ t }}</li>
+                		{% endfor %}
+                	</ul>
+                </td>
+                <td>
+                	<ul>
+                		{% for f in entity.farbe %}
+                			<li>{{ f }}</li>
+                		{% endfor %}	
+                	</ul>
+                </td>
+                
                 <td>{{ entity.stichwort }}</td>
                 <td>
                 <ul>

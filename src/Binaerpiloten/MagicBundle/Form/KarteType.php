@@ -21,10 +21,13 @@ class KarteType extends AbstractType
             ->add('farbe','entity',array(
             		'multiple' => true,
             		'expanded' => true,
-            		'class' => 'BinaerpilotenMagicBundle:Farbe',
+            		'class' => 'BinaerpilotenMagicBundle:Farbe')
             )
+            ->add('typ','entity',array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'class' => 'BinaerpilotenMagicBundle:Typ')
             )
-            ->add('typ')
             ->add('stichwort')
         ;
     }

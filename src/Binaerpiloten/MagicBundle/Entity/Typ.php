@@ -27,7 +27,11 @@ class Typ
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Karte", mappedBy="id")
+     */
+    private $karte_id;
 
     /**
      * Get id
@@ -60,5 +64,9 @@ class Typ
     public function getName()
     {
         return $this->name;
+    }
+    
+    public function __toString() {
+    	return $this->name;
     }
 }

@@ -42,9 +42,8 @@ class Karte
     private $farbe;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="typ", type="object")
+     * @ORM\ManyToMany(targetEntity="Typ", inversedBy="karte_id")
+     * @ORM\JoinTable(name="karte_typ")
      */
     private $typ;
 

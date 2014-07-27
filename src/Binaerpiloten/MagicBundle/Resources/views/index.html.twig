@@ -39,7 +39,7 @@
 							{% if is_granted('ROLE_USER') %}
 								{# is the viewer logged in? #}
 								{% include "BinaerpilotenMagicBundle:Menu:user.html.twig" %}
-								{% include "BinaerpilotenMagicBundle:Menu:spiel.html.twig" %}
+								{% include "BinaerpilotenMagicBundle:Menu:karten.html.twig" %}
 							{% else %}
 								{# if not, present login-form #}
 								{% include "BinaerpilotenMagicBundle:Menu:login.html.twig" %}
