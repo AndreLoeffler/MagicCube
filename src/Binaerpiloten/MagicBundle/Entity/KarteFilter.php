@@ -25,6 +25,16 @@ class KarteFilter
      * @ORM\ManyToMany(targetEntity="Typ")
      */
     protected $typ;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Farbe")
+     */
+    protected $farbe;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Seltenheit")
+     */
+    protected $seltenheit;
 
 
     /**
@@ -42,6 +52,8 @@ class KarteFilter
     public function __construct()
     {
         $this->typ = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->farbe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->seltenheit = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -75,5 +87,71 @@ class KarteFilter
     public function getTyp()
     {
         return $this->typ;
+    }
+
+    /**
+     * Add farbe
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Farbe $farbe
+     * @return KarteFilter
+     */
+    public function addFarbe(\Binaerpiloten\MagicBundle\Entity\Farbe $farbe)
+    {
+        $this->farbe[] = $farbe;
+
+        return $this;
+    }
+
+    /**
+     * Remove farbe
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Farbe $farbe
+     */
+    public function removeFarbe(\Binaerpiloten\MagicBundle\Entity\Farbe $farbe)
+    {
+        $this->farbe->removeElement($farbe);
+    }
+
+    /**
+     * Get farbe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFarbe()
+    {
+        return $this->farbe;
+    }
+
+    /**
+     * Add seltenheit
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
+     * @return KarteFilter
+     */
+    public function addSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
+    {
+        $this->seltenheit[] = $seltenheit;
+
+        return $this;
+    }
+
+    /**
+     * Remove seltenheit
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
+     */
+    public function removeSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
+    {
+        $this->seltenheit->removeElement($seltenheit);
+    }
+
+    /**
+     * Get seltenheit
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSeltenheit()
+    {
+        return $this->seltenheit;
     }
 }

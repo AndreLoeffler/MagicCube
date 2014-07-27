@@ -21,6 +21,18 @@ class KarteFilterType extends AbstractType
             		'required' => false,
             		'class' => 'BinaerpilotenMagicBundle:Typ',
             ))
+            ->add('farbe','entity',array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'required' => false,
+            		'class' => 'BinaerpilotenMagicBundle:Farbe',
+            ))
+            ->add('seltenheit','entity',array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'required' => false,
+            		'class' => 'BinaerpilotenMagicBundle:Seltenheit',
+            ))
         ;
     }
     

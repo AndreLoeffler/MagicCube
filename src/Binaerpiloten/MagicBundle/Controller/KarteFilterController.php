@@ -88,22 +88,44 @@ class KarteFilterController extends Controller
     	$query = $repository->createQueryBuilder('s');
     	$parameters = array();
     	
-        if ($filter->getTyp() != null) {
-    		$types = $filter->getTyp()->toArray();
-    		//$query->andWhere($query->expr()->in('ct', $types));
+    	$types = $filter->getTyp()->toArray();
+        if (sizeof($types)>0) {
     		$i = 0;
-    		$memstring = "";
+    		$tstring = "";
    			foreach ($types as $t) {
-				$memstring .= ":type".$i." MEMBER OF s.typ";   
+				$tstring .= ":type".$i." MEMBER OF s.typ";   
 				$parameters[':type'.$i] = $types[$i];
 				$i++;
-				if (sizeof($types) > $i) $memstring .= " AND ";
+				if (sizeof($types) > $i) $tstring .= " AND ";
    			}
-   			$query->andWhere($memstring);
-    		
+   			$query->andWhere($tstring);
     	}
     	
-    	echo $query;
+    	$farben = $filter->getFarbe()->toArray();
+    	if (sizeof($farben)>0) {
+    		$j = 0;
+    		$memstring = "";
+    		foreach ($farben as $t) {
+    			$memstring .= ":col".$j." MEMBER OF s.farbe";
+    			$parameters[':col'.$j] = $farben[$j];
+    			$j++;
+    			if (sizeof($farben) > $j) $memstring .= " AND ";
+    		}
+    		$query->andWhere($memstring);
+    	}
+    	
+    	$seltenheit = $filter->getSeltenheit()->toArray();
+    	if (sizeof($seltenheit)>0) {
+    		$k = 0;
+    		$rarstring = "";
+    		foreach ($seltenheit as $t) {
+    			$rarstring .= "s.seltenheit = :rar".$k;
+    			$parameters[':rar'.$k] = $seltenheit[$k];
+    			$k++;
+    			if (sizeof($seltenheit) > $k) $rarstring .= " OR ";
+    		}
+    		$query->andWhere($rarstring);
+    	}
     	
     	$query->setParameters($parameters);
     	$entities = $query->getQuery()->getResult();
