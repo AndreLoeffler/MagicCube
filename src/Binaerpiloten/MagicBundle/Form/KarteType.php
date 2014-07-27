@@ -28,7 +28,6 @@ class KarteType extends AbstractType
             		'expanded' => true,
             		'class' => 'BinaerpilotenMagicBundle:Typ')
             )
-            ->add('stichwort')
         ;
     }
     

@@ -11,9 +11,6 @@ typ:
 farbe:
     resource: "@BinaerpilotenMagicBundle/Controller/FarbeController.php"
     type: annotation 
-stichwort:
-    resource: "@BinaerpilotenMagicBundle/Controller/StichwortController.php"
-    type: annotation
 karte:
     resource: "@BinaerpilotenMagicBundle/Controller/KarteController.php"
     type: annotation    

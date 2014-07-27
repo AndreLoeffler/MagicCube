@@ -48,14 +48,6 @@ class Karte
     private $typ;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\Column(name="stichwort", type="object")
-     */
-    private $stichwort;
-
-
-    /**
      * Get id
      *
      * @return integer 
