@@ -6,7 +6,19 @@
 			<span class="glyphicon glyphicon-chevron-left"></span> Spiele
 		</button>
 		<ul class="dropdown-menu pull-right" role="menu">
-			<li><a>bla</a></li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Karten
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('karte') }}">Alle Karten</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('karte_new') }}">Neue Karte</a></li>
+					</ul>
+				</div>
+			</li>
 		</ul>
 	</div>
 </li>

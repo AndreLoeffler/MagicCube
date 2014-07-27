@@ -1,0 +1,15 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    <h1>Karte creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('karte') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

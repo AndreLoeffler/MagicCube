@@ -2,6 +2,7 @@
 
 namespace Binaerpiloten\MagicBundle\Entity;
 
+use Binaerpiloten\MagicBundle\Entity\Karte;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,11 @@ class Farbe
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+    
+    /**
+	* @ORM\ManyToMany(targetEntity="Karte", mappedBy="id")
+     */
+    private $karte_id;
 
 
     /**
@@ -60,5 +66,82 @@ class Farbe
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->karten = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add karten
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karten
+     * @return Farbe
+     */
+    public function addKarten(\Binaerpiloten\MagicBundle\Entity\Karte $karten)
+    {
+        $this->karten[] = $karten;
+
+        return $this;
+    }
+
+    /**
+     * Remove karten
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karten
+     */
+    public function removeKarten(\Binaerpiloten\MagicBundle\Entity\Karte $karten)
+    {
+        $this->karten->removeElement($karten);
+    }
+
+    /**
+     * Get karten
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getKarten()
+    {
+        return $this->karten;
+    }
+    
+    public function __toString() {
+    	return $this->name;
+    }
+
+    /**
+     * Add karte_id
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karteId
+     * @return Farbe
+     */
+    public function addKarteId(\Binaerpiloten\MagicBundle\Entity\Karte $karteId)
+    {
+        $this->karte_id[] = $karteId;
+
+        return $this;
+    }
+
+    /**
+     * Remove karte_id
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karteId
+     */
+    public function removeKarteId(\Binaerpiloten\MagicBundle\Entity\Karte $karteId)
+    {
+        $this->karte_id->removeElement($karteId);
+    }
+
+    /**
+     * Get karte_id
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getKarteId()
+    {
+        return $this->karte_id;
     }
 }
