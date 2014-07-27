@@ -14,3 +14,7 @@ div.btn-group.secondary:hover ul.dropdown-menu{
 div.btn-group ul.dropdown-menu{
     margin-top: 0px;    
 }
+
+body {
+	background: url(../images/bg.png) repeat;
+}
