@@ -29,12 +29,16 @@ class Karte
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="anzahl", type="string", length=255)
+     * @ORM\Column(name="anzahl", type="integer")
      */
     private $anzahl;
 
+    /**
+     * @ORM\Column(name="mana", type="integer")
+     */
+    private $mana;
+    
+    
     /**
      * @ORM\ManyToMany(targetEntity="Farbe", inversedBy="karte_id")
      * @ORM\JoinTable(name="karte_farbe")
@@ -245,5 +249,28 @@ class Karte
     public function getSeltenheit()
     {
         return $this->seltenheit;
+    }
+
+    /**
+     * Set mana
+     *
+     * @param integer $mana
+     * @return Karte
+     */
+    public function setMana($mana)
+    {
+        $this->mana = $mana;
+
+        return $this;
+    }
+
+    /**
+     * Get mana
+     *
+     * @return integer 
+     */
+    public function getMana()
+    {
+        return $this->mana;
     }
 }

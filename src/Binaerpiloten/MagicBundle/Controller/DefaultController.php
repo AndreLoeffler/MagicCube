@@ -17,7 +17,7 @@ class DefaultController extends Controller
 {
 	
 	/**
-	 * Prepares gauges.
+	 * Prepares gauges and info.
 	 *
 	 * @Route("/", name="home")
 	 * @Method("GET")
@@ -32,11 +32,13 @@ class DefaultController extends Controller
     	$farben = $this->farbenGauge($karten, $em);
     	$selten = $this->rarityGauge($karten, $em);
     	$typen = $this->typGauge($karten, $em);
-    	
+    	$mana = $this->manaGauge($karten, $em);
+ 
         return array(
             'farben' => $farben,
         	'selten' => $selten,
         	'typen' => $typen,
+        	'mana' => $mana,
         );
     }
     
@@ -115,6 +117,29 @@ class DefaultController extends Controller
     		$entities[$k->getSeltenheit()->getName()]['count'] += $k->getAnzahl();
     	}
     	 
+    	return $entities;
+    }
+    
+    private function manaGauge($karten, $em) {
+        $farben = $em->createQuery("SELECT  u " .
+    		"FROM Binaerpiloten\MagicBundle\Entity\Farbe u ")->getResult();
+    	 
+    	$entities = array();
+    	for ($i = 0 ; $i < 8 ; $i++ ){
+	    	foreach ($farben as $f) {
+	    		$n = $f->getName();
+	    		$entities[$i][$n]['count'] = 0;
+	    		$entities[$i][$n]['color'] = $f->getDisplay(); 
+	    		$entities[$i][$n]['slice'] = $i;
+	    	}
+    	}
+    	foreach ($karten as $k){
+    		foreach ($k->getFarbe() as $f) {
+    			$ind = $k->getMana();
+    			if ($ind > 6) $ind = 7;
+    			$entities[$ind][$f->getName()]['count'] += 1 / sizeof($k->getFarbe());
+    		}
+    	}
     	return $entities;
     }
 }

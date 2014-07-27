@@ -18,6 +18,7 @@ class KarteType extends AbstractType
         $builder
             ->add('name')
             ->add('anzahl')
+            ->add('mana')
             ->add('farbe','entity',array(
             		'multiple' => true,
             		'expanded' => true,

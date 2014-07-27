@@ -78,6 +78,32 @@
         chart.draw(data, options);
       }
     </script>
+    <script type="text/javascript">
+    function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Mana', {% for k,v in mana[0] %}'{{ k }}',{% endfor %}],
+          {% for zahl in mana %}
+          	[{{ loop.index }}, {% for z in zahl %}{{ z.count }},{% endfor %}], 
+          {% endfor %}
+        ]);
+
+        var options = {
+          title : 'Manakosten nach Farbe',
+          backgroundColor: 'transparent',
+          vAxis: {title: "Anzahl"},
+          hAxis: {title: "Kosten",
+              	  ticks: [0,1,2,3,4,5,6,7]
+              	},
+          seriesType: "bars",
+          colors: [ {% for t in mana[0] %}'{{ t.color }}',{% endfor %} ],
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('mana'));
+        chart.draw(data, options);
+      }
+      google.setOnLoadCallback(drawVisualization);
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -86,6 +112,9 @@
 		<div id="seltenheiten" class="col-md-6 well" style="height: 400px;"></div>
 	</div>
 	<div class="row">
+		<div id="mana" class="col-md-12 well" style="height: 400px;"></div>
+	<div class="row">
+	</div>
 		<div id="typ" class="col-md-6 well" style="height: 400px;"></div>
 	</div>
 {% endblock %}
