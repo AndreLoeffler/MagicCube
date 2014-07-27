@@ -18,3 +18,7 @@ div.btn-group ul.dropdown-menu{
 body {
 	background: url(../images/bg.png) repeat;
 } 
+
+.form-listing * ol {
+	list-style-type: none;
+}

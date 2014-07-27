@@ -1,0 +1,12 @@
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+
+    <ol class="list-group {{ id }}">
+    {% for child in form %}
+        <li>{{ form_widget(child) }} {{ form_label(child) }}</li>
+    {% endfor %}
+    </ol>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}
