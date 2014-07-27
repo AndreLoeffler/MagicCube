@@ -105,4 +105,8 @@ class Seltenheit
     {
         return $this->karte_id;
     }
+    
+    public function __toString() {
+    	return $this->name;
+    }
 }

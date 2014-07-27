@@ -48,7 +48,7 @@ class Karte
     private $typ;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Seltenheit", inversedBy="karte_id", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Seltenheit", inversedBy="karte_id")
      * @ORM\JoinTable(name="karte_seltenheit")
      */
     private $seltenheit;
@@ -222,33 +222,25 @@ class Karte
         $this->typ->removeElement($typ);
     }
 
+
+
     /**
-     * Add seltenheit
+     * Set seltenheit
      *
      * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
      * @return Karte
      */
-    public function addSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
+    public function setSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit = null)
     {
-        $this->seltenheit[] = $seltenheit;
+        $this->seltenheit = $seltenheit;
 
         return $this;
     }
 
     /**
-     * Remove seltenheit
-     *
-     * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
-     */
-    public function removeSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
-    {
-        $this->seltenheit->removeElement($seltenheit);
-    }
-
-    /**
      * Get seltenheit
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Binaerpiloten\MagicBundle\Entity\Seltenheit 
      */
     public function getSeltenheit()
     {

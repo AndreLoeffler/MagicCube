@@ -24,10 +24,14 @@
             <tr>
                 <th>Typ</th>
                 <td>
-                {% for f in entity.typ %}
-					<span class="btn btn-default">{{ f }}</span>
+                {% for t in entity.typ %}
+					<span class="btn btn-default">{{ t }}</span>
                 {% endfor %}
                 </td>
+            </tr>
+            <tr>
+            	<th>Seltehheit</th>
+            	<td><span class="btn btn-default">{{ entity.seltenheit }}</span></td>
             </tr>
         </tbody>
     </table>
