@@ -36,16 +36,22 @@ class Karte
     private $anzahl;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Farbe", inversedBy="karte_id")
+     * @ORM\ManyToMany(targetEntity="Farbe", inversedBy="karte_id", cascade={"remove"})
      * @ORM\JoinTable(name="karte_farbe")
      */
     private $farbe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Typ", inversedBy="karte_id")
+     * @ORM\ManyToMany(targetEntity="Typ", inversedBy="karte_id", cascade={"remove"})
      * @ORM\JoinTable(name="karte_typ")
      */
     private $typ;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Seltenheit", inversedBy="karte_id", cascade={"remove"})
+     * @ORM\JoinTable(name="karte_seltenheit")
+     */
+    private $seltenheit;
 
     /**
      * Get id
@@ -191,5 +197,61 @@ class Karte
     public function getFarbe()
     {
         return $this->farbe;
+    }
+
+    /**
+     * Add typ
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Typ $typ
+     * @return Karte
+     */
+    public function addTyp(\Binaerpiloten\MagicBundle\Entity\Typ $typ)
+    {
+        $this->typ[] = $typ;
+
+        return $this;
+    }
+
+    /**
+     * Remove typ
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Typ $typ
+     */
+    public function removeTyp(\Binaerpiloten\MagicBundle\Entity\Typ $typ)
+    {
+        $this->typ->removeElement($typ);
+    }
+
+    /**
+     * Add seltenheit
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
+     * @return Karte
+     */
+    public function addSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
+    {
+        $this->seltenheit[] = $seltenheit;
+
+        return $this;
+    }
+
+    /**
+     * Remove seltenheit
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit
+     */
+    public function removeSeltenheit(\Binaerpiloten\MagicBundle\Entity\Seltenheit $seltenheit)
+    {
+        $this->seltenheit->removeElement($seltenheit);
+    }
+
+    /**
+     * Get seltenheit
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSeltenheit()
+    {
+        return $this->seltenheit;
     }
 }

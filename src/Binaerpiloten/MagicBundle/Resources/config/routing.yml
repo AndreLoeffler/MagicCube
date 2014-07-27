@@ -14,3 +14,6 @@ farbe:
 karte:
     resource: "@BinaerpilotenMagicBundle/Controller/KarteController.php"
     type: annotation    
+seltenheit:
+    resource: "@BinaerpilotenMagicBundle/Controller/SeltenheitController.php"
+    type: annotation        
