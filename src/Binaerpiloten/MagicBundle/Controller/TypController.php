@@ -23,7 +23,7 @@ class TypController extends Controller
      *
      * @Route("/", name="typ")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Typ:index.html.twig")
      */
     public function indexAction()
     {
@@ -40,7 +40,7 @@ class TypController extends Controller
      *
      * @Route("/", name="typ_create")
      * @Method("POST")
-     * @Template("BinaerpilotenMagicBundle:Typ:new.html.twig")
+     * @Template("BinaerpilotenMagicBundle:Karte/Typ:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -86,7 +86,7 @@ class TypController extends Controller
      *
      * @Route("/new", name="typ_new")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Typ:new.html.twig")
      */
     public function newAction()
     {
@@ -104,7 +104,7 @@ class TypController extends Controller
      *
      * @Route("/{id}", name="typ_show")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Typ:show.html.twig")
      */
     public function showAction($id)
     {
@@ -129,7 +129,7 @@ class TypController extends Controller
      *
      * @Route("/{id}/edit", name="typ_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte/Typ:edit.html.twig")
      */
     public function editAction($id)
     {
