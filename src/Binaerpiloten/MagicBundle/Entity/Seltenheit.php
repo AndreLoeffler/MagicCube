@@ -29,7 +29,6 @@ class Seltenheit
     private $name;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Karte", mappedBy="id")
      */
     private $karte_id;
 

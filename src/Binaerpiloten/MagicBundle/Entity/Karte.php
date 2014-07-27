@@ -36,20 +36,20 @@ class Karte
     private $anzahl;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Farbe", inversedBy="karte_id", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="Farbe", inversedBy="karte_id")
      * @ORM\JoinTable(name="karte_farbe")
      */
     private $farbe;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Typ", inversedBy="karte_id", cascade={"remove"})
+     * @ORM\ManyToMany(targetEntity="Typ", inversedBy="karte_id")
      * @ORM\JoinTable(name="karte_typ")
      */
     private $typ;
     
     /**
      * @ORM\ManyToOne(targetEntity="Seltenheit", inversedBy="karte_id")
-     * @ORM\JoinTable(name="karte_seltenheit")
+     * @ORM\JoinColumn(name="karte_seltenheit", referencedColumnName="id")
      */
     private $seltenheit;
 

@@ -29,7 +29,7 @@ class Typ
     private $name;
     
     /**
-     * @ORM\ManyToMany(targetEntity="Karte", mappedBy="id")
+     * @ORM\ManyToMany(targetEntity="Karte", mappedBy="typ")
      */
     private $karte_id;
 
@@ -68,5 +68,45 @@ class Typ
     
     public function __toString() {
     	return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->karte_id = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add karte_id
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karteId
+     * @return Typ
+     */
+    public function addKarteId(\Binaerpiloten\MagicBundle\Entity\Karte $karteId)
+    {
+        $this->karte_id[] = $karteId;
+
+        return $this;
+    }
+
+    /**
+     * Remove karte_id
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Karte $karteId
+     */
+    public function removeKarteId(\Binaerpiloten\MagicBundle\Entity\Karte $karteId)
+    {
+        $this->karte_id->removeElement($karteId);
+    }
+
+    /**
+     * Get karte_id
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getKarteId()
+    {
+        return $this->karte_id;
     }
 }

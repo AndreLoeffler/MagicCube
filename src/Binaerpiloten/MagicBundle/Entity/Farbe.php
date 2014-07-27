@@ -30,7 +30,7 @@ class Farbe
     private $name;
     
     /**
-	 * @ORM\ManyToMany(targetEntity="Karte", mappedBy="id")
+	 * @ORM\ManyToMany(targetEntity="Karte", mappedBy="farbe")
      */
     private $karte_id;
 
