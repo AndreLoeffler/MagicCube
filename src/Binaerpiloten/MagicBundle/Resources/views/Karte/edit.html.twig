@@ -1,16 +1,44 @@
 {% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
 
+{% form_theme form 'BinaerpilotenMagicBundle:Form:kartefields.html.twig' %}
+
 {% block content %}
-    <h1>Karte edit</h1>
+    <h1>Neue Karte anlegen</h1>
 
-    {{ form(edit_form) }}
+    {{ form_start(form) }}
+<table class="well">
+  <tr>
+    <td>Name: </td>
+    <td>{{ form(form.name) }}</td>
+  </tr>
+  <tr>
+    <td>Anzahl: </td>
+    <td>{{ form_widget(form.anzahl) }}</td>
+  </tr>
+  <tr>
+    <td>Umgewandelte Manakosten: </td>
+    <td>{{ form_widget(form.mana) }}</td>
+  </tr>
+</table>
+<div class="row">
+	<div class="col-md-4 form-listing well">
+		<h4>Farbe</h4>
+		{{ form_widget(form.farbe) }}
+	</div>
+	<div class="col-md-4 form-listing well">
+		<h4>Typ</h4>
+		{{ form_widget(form.typ) }}
+	</div>
+	<div class="col-md-4 form-listing well">
+		<h4>Seltenheit</h4>
+		{{ form_widget(form.seltenheit) }}
+	</div>
+</div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('karte') }}">
-            Back to the list
-        </a>
-    </li>
+    
+<ul class="record_actions">
+    <li><a href="{{ path('karte') }}">Übersicht</a></li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+{{ form_end(form) }}
 {% endblock %}

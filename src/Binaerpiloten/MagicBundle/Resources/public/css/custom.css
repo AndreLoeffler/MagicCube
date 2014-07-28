@@ -18,3 +18,9 @@ ul.impressum {
 span.quelle {
 	float: right;
 }
+
+.btn:focus, 
+.btn:focus:active {
+	outline: none;
+	outline-offset: 0;
+}

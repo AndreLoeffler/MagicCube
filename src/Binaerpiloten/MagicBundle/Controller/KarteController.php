@@ -130,7 +130,7 @@ class KarteController extends Controller
      *
      * @Route("/{id}/edit", name="karte_edit")
      * @Method("GET")
-     * @Template()
+     * @Template("BinaerpilotenMagicBundle:Karte:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -147,7 +147,7 @@ class KarteController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -199,7 +199,7 @@ class KarteController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

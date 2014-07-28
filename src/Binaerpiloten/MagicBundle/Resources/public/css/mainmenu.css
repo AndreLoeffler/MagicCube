@@ -47,12 +47,13 @@ div.btn-group.primary >ul.dropdown-menu >li {
 	min-width: 100px;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:hover {
+.dropdown-menu > li > a:hover {
 	background: none;
 }
 
-.main-menu a {
+.nav > li > a.main-menu {
 	color: #333;
+	padding: 0;
 }
 .main-menu a:hover {
 	text-decoration: none;
