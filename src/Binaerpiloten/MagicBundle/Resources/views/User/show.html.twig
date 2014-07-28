@@ -16,16 +16,16 @@
                 <td>{{ entity.username }}</td>
             </tr>
             <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
                 <th>Email</th>
                 <td>{{ entity.email }}</td>
             </tr>
             <tr>
                 <th>Lastlogin</th>
                 <td>{{ entity.lastLogin|date('d.m.Y') }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
             </tr>
         </tbody>
     </table>
@@ -38,6 +38,6 @@
 	<li><a href="{{ path('fos_user_profile_edit') }}">Daten ändern</a><br/></li>
 	<li><a href="{{ path('fos_user_change_password') }}">Passwort ändern</a></li>
 {% endif %}
-  <li><a href="{{ path('user') }}">Alle Spieler</a></li>
+  	{% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('user') }}">Alle Spieler</a></li>{% endif %}
 </ul>
 {% endblock %}

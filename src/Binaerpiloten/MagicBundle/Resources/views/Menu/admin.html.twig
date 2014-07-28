@@ -45,6 +45,19 @@
 					</ul>
 				</div>
 			</li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Nutzer
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('user') }}">Alle Nutzer</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('fos_user_registration_register') }}">Neuen Nutzer anlegen</a></li>
+					</ul>
+				</div>
+			</li>
 		</ul>
 	</div>
 </li>

@@ -21,7 +21,7 @@ class UserController extends Controller
     /**
      * Lists all User entities.
      *
-     * @Route("/", name="user")
+     * @Route("/list", name="user")
      * @Method("GET")
      * @Template()
      */
