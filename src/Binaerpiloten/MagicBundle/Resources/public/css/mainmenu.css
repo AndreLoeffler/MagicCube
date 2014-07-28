@@ -1,0 +1,59 @@
+.btn-group.primary.open > .dropdown-menu.pull-right {
+	display: inline-flex;
+}
+
+.navigation * .dropdown-menu.pull-right {
+	top: 0;
+	right: 100%;
+	padding: 0px 0;
+	height: 34px;
+}
+
+div.btn-group.secondary:hover ul.dropdown-menu{
+    display: block;    
+}
+
+div.btn-group ul.dropdown-menu{
+    margin-top: 0px;    
+}
+
+.main-menu, 
+.main-menu button {
+	width: 100%;
+}
+
+.btn-group.secondary > .dropdown-toggle {
+	border: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	background: none;
+	height: 26px;
+	padding: 3px 20px;
+}
+button.main-menu:hover,
+.btn-group.open > .dropdown-toggle,
+.main-menu > button:active,
+.main-menu > button:hover {
+	background: rgb(144,144,144); /* Old browsers */
+	background: -moz-linear-gradient(left, rgba(144,144,144,1) 0%, rgba(245,245,245,1) 50%, rgba(144,144,144,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(144,144,144,1)), color-stop(50%,rgba(245,245,245,1)), color-stop(100%,rgba(144,144,144,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left, rgba(144,144,144,1) 0%,rgba(245,245,245,1) 50%,rgba(144,144,144,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left, rgba(144,144,144,1) 0%,rgba(245,245,245,1) 50%,rgba(144,144,144,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left, rgba(144,144,144,1) 0%,rgba(245,245,245,1) 50%,rgba(144,144,144,1) 100%); /* IE10+ */
+	background: linear-gradient(to right, rgba(144,144,144,1) 0%,rgba(245,245,245,1) 50%,rgba(144,144,144,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#909090', endColorstr='#909090',GradientType=1 ); /* IE6-9 */
+}
+div.btn-group.primary >ul.dropdown-menu >li {
+	min-width: 100px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:hover {
+	background: none;
+}
+
+.main-menu a {
+	color: #333;
+}
+.main-menu a:hover {
+	text-decoration: none;
+}

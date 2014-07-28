@@ -43,6 +43,34 @@ class DefaultController extends Controller
     }
     
     /**
+     * Kontakt page.
+     *
+     * @Route("/kontakt", name="kontakt")
+     * @Method("GET")
+     * @Template("BinaerpilotenMagicBundle:Main:kontakt.html.twig")
+     */
+    public function kontaktAction() {
+    
+    	return array(
+    			
+    	);
+    }
+
+    /**
+     * Impressum page.
+     *
+     * @Route("/impressum", name="impressum")
+     * @Method("GET")
+     * @Template("BinaerpilotenMagicBundle:Main:impressum.html.twig")
+     */
+    public function impressumAction() {
+    
+    	return array(
+    			 
+    	);
+    }
+    
+    /**
      * * * * * * * * * * * Santas Little Helpers * * * * * * * * * * * * * * * * * * 
      */
     
