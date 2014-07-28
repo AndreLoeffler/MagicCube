@@ -36,6 +36,7 @@ class Seltenheit
     private $display;
     
     /**
+     * @ORM\OneToMany(targetEntity="Karte", mappedBy="seltenheit")
      */
     private $karte_id;
 
