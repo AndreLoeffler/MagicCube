@@ -13,25 +13,25 @@
   </tr>
   <tr>
     <td>Anzahl: </td>
-    <td>{{ form(form.anzahl) }}</td>
+    <td>{{ form_widget(form.anzahl) }}</td>
   </tr>
   <tr>
     <td>Umgewandelte Manakosten: </td>
-    <td>{{ form(form.mana) }}</td>
+    <td>{{ form_widget(form.mana) }}</td>
   </tr>
 </table>
 <div class="row">
 	<div class="col-md-4 form-listing well">
 		<h4>Farbe</h4>
-		{{ form(form.farbe) }}
+		{{ form_widget(form.farbe) }}
 	</div>
 	<div class="col-md-4 form-listing well">
 		<h4>Typ</h4>
-		{{ form(form.typ) }}
+		{{ form_widget(form.typ) }}
 	</div>
 	<div class="col-md-4 form-listing well">
 		<h4>Seltenheit</h4>
-		{{ form(form.seltenheit) }}
+		{{ form_widget(form.seltenheit) }}
 	</div>
 </div>
 
