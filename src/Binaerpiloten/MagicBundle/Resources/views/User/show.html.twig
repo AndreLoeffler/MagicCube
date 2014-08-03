@@ -8,13 +8,14 @@
 
 {% block content %}
 <div class="row">
+	<div class="col-md-12">
+	    <h1>Nutzername: {{ entity.username }}</h1>
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-6">
-    <table class="record_properties">
+    <table class="record_properties table">
         <tbody>
-            <tr>
-                <th>Username</th>
-                <td>{{ entity.username }}</td>
-            </tr>
             <tr>
                 <th>Name</th>
                 <td>{{ entity.name }}</td>
@@ -24,20 +25,25 @@
                 <td>{{ entity.email }}</td>
             </tr>
             <tr>
-                <th>Lastlogin</th>
+                <th>Letzter Login</th>
                 <td>{{ entity.lastLogin|date('d.m.Y') }}</td>
             </tr>
+            {% if self %}
+            <tr>
+            	<th>Passwort</th>
+				<td><a href="{{ path('fos_user_change_password') }}">ändern</a></td>
+            </tr>
+			{% endif %}
         </tbody>
     </table>
 	</div>
+	<div class="col-md-6">
+		{% if self %}
+			<li><a href="{{ path('fos_user_profile_edit') }}">Daten ändern</a><br/></li>
+		{% endif %}
+		  	{% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('user') }}">Alle Spieler</a></li>{% endif %}
+	</div>
 </div>
+{% endblock %}
     
 	
-<ul class="record_actions">
-{% if self %}
-	<li><a href="{{ path('fos_user_profile_edit') }}">Daten ändern</a><br/></li>
-	<li><a href="{{ path('fos_user_change_password') }}">Passwort ändern</a></li>
-{% endif %}
-  	{% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('user') }}">Alle Spieler</a></li>{% endif %}
-</ul>
-{% endblock %}

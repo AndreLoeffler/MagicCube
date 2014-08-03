@@ -35,25 +35,6 @@ class UserController extends Controller
             'entities' => $entities,
         );
     }
-    
-    /**
-     * Lists all User entities.
-     *
-     * @Route("/friends", name="user_friends")
-     * @Method("GET")
-     * @Template("BinaerpilotenMagicBundle:User:index.html.twig")
-     */
-    public function indexFriendAction()
-    {
-    	$em = $this->getDoctrine()->getManager();
-    	$user = $this->getUser();
-    	
-    	$entities = $em->createQuery("SELECT u FROM Binaerpiloten\MagicBundle\Entity\User u");
-    
-   		return array(
-   				'entities' => $entities,
-   		);
-    }
 
     /**
      * Finds and displays a User entity.
