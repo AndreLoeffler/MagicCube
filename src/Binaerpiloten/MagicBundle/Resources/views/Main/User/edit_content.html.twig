@@ -1,0 +1,44 @@
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+{{ form_start(form) }}
+	
+<div class="row">
+	<div class="col-md-12">
+	{{ form_errors(form) }}
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+    <table class="record_properties table">
+        <tbody>
+            <tr>
+                <th>Nutzername</th>
+                <td>{{ form_widget(form.username) }}</td>
+            </tr>
+        	<tr>
+                <th>Name</th>
+                <td>{{ form_widget(form.name) }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ form_widget(form.email) }}</td>
+            </tr>
+            <tr>
+            	<th>Passwort</th>
+            	<td>{{ form_widget(form.current_password) }}</td>
+            </tr>
+        </tbody>
+    </table>
+	</div>
+	<div class="col-md-6">
+	{{ form_rest(form) }}
+		<ul>
+	  		{% if is_granted('ROLE_ADMIN') %}
+	  			<li><a href="{{ path('user') }}">Alle Spieler</a></li>
+  			{% endif %}
+	  		<li><input type="submit" value="Ändern" /></li>
+	  	</ul>
+	</div>
+	
+</div>
+{{ form_end(form) }}
+</form>

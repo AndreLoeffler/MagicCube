@@ -35,26 +35,26 @@ class UserController extends Controller
             'entities' => $entities,
         );
     }
-
+    
     /**
      * Finds and displays a User entity.
      *
      * @Route("/{id}", name="user_show")
      * @Method("GET")
-     * @Template()
+     * @Template("FOSUserBundle:Profile:show.html.twig")
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('BinaerpilotenMagicBundle:User')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find User entity.');
-        }
-
-        return array(
-            'entity'      => $entity,
-        );
+    	$em = $this->getDoctrine()->getManager();
+    
+    	$entity = $em->getRepository('BinaerpilotenMagicBundle:User')->find($id);
+    
+    	if (!$entity) {
+    		throw $this->createNotFoundException('Unable to find User entity.');
+    	}
+    
+    	return array(
+    			'user'      => $entity,
+    	);
     }
 }

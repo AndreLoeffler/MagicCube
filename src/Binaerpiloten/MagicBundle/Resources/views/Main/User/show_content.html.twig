@@ -1,15 +1,8 @@
-{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+{% set self = (app.user.id == user.id) %}
 
-{% block tplstyle %}
-
-{% endblock %}
-
-{% set self = (app.user.id == entity.id) %}
-
-{% block content %}
 <div class="row">
 	<div class="col-md-12">
-	    <h1>Nutzername: {{ entity.username }}</h1>
+	    <h1>Nutzername: {{ user.username }}</h1>
 	</div>
 </div>
 <div class="row">
@@ -18,15 +11,15 @@
         <tbody>
             <tr>
                 <th>Name</th>
-                <td>{{ entity.name }}</td>
+                <td>{{ user.name }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ entity.email }}</td>
+                <td>{{ user.email }}</td>
             </tr>
             <tr>
                 <th>Letzter Login</th>
-                <td>{{ entity.lastLogin|date('d.m.Y') }}</td>
+                <td>{{ user.lastLogin|date('d.m.Y') }}</td>
             </tr>
             {% if self %}
             <tr>
@@ -44,6 +37,3 @@
 		  	{% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('user') }}">Alle Spieler</a></li>{% endif %}
 	</div>
 </div>
-{% endblock %}
-    
-	
