@@ -127,7 +127,7 @@ class FarbeController extends Controller
     /**
      * Displays a form to edit an existing Farbe entity.
      *
-     * @Route("/{id}/edit", name="farbe_edit")
+     * @Route("/edit/{id}", name="farbe_edit")
      * @Method("GET")
      * @Template("BinaerpilotenMagicBundle:Karte/Farbe:edit.html.twig")
      */
@@ -205,7 +205,7 @@ class FarbeController extends Controller
     /**
      * Deletes a Farbe entity.
      *
-     * @Route("/{id}", name="farbe_delete")
+     * @Route("/delete/{id}", name="farbe_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

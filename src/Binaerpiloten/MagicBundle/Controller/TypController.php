@@ -127,7 +127,7 @@ class TypController extends Controller
     /**
      * Displays a form to edit an existing Typ entity.
      *
-     * @Route("/{id}/edit", name="typ_edit")
+     * @Route("/edit/{id}", name="typ_edit")
      * @Method("GET")
      * @Template("BinaerpilotenMagicBundle:Karte/Typ:edit.html.twig")
      */
@@ -205,7 +205,7 @@ class TypController extends Controller
     /**
      * Deletes a Typ entity.
      *
-     * @Route("/{id}", name="typ_delete")
+     * @Route("/delete/{id}", name="typ_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

@@ -26,6 +26,12 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/user/list, role: ROLE_ADMIN }
+        - { path: ^/karte/edit, role: ROLE_ADMIN }
+        - { path: ^/karte/new, role: ROLE_ADMIN }
+        - { path: ^/.*/delete, role: ROLE_ADMIN }
+        - { path: ^/farbe, role: ROLE_ADMIN }
+        - { path: ^/seltenheit, role: ROLE_ADMIN }
+        - { path: ^/typ, role: ROLE_ADMIN }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

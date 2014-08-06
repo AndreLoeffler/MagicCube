@@ -127,7 +127,7 @@ class SeltenheitController extends Controller
     /**
      * Displays a form to edit an existing Seltenheit entity.
      *
-     * @Route("/{id}/edit", name="seltenheit_edit")
+     * @Route("/edit/{id}", name="seltenheit_edit")
      * @Method("GET")
      * @Template("BinaerpilotenMagicBundle:Karte/Seltenheit:edit.html.twig")
      */
@@ -205,7 +205,7 @@ class SeltenheitController extends Controller
     /**
      * Deletes a Seltenheit entity.
      *
-     * @Route("/{id}", name="seltenheit_delete")
+     * @Route("/delete/{id}", name="seltenheit_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

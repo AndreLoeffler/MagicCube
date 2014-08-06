@@ -12,13 +12,18 @@
                 <th>Farbe</th>
                 <th>Mana</th>
                 <th>Seltenheit</th>
-                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('karte_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>
+                {% if is_granted('ROLE_ADMIN') %}
+                	<a href="{{ path('karte_edit', { 'id': entity.id }) }}">{{ entity.name }}</a>
+                {% else %}
+                	<a href="{{ path('karte_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
+                {% endif %}
+                </td>
                 <td>{{ entity.anzahl }}</td>
                 <td>
                 	<ul>
@@ -36,27 +41,17 @@
                 </td>
                 <td>{{ entity.mana }}</td>
                 <td>{{ entity.seltenheit }}</td>
-                
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('karte_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('karte_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
+{% if is_granted('ROLE_ADMIN') %}
+	<ul>
         <li>
             <a href="{{ path('karte_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endif %}
+{% endblock %}

@@ -128,7 +128,7 @@ class KarteController extends Controller
     /**
      * Displays a form to edit an existing Karte entity.
      *
-     * @Route("/{id}/edit", name="karte_edit")
+     * @Route("/edit/{id}", name="karte_edit")
      * @Method("GET")
      * @Template("BinaerpilotenMagicBundle:Karte:edit.html.twig")
      */
@@ -206,7 +206,7 @@ class KarteController extends Controller
     /**
      * Deletes a Karte entity.
      *
-     * @Route("/{id}", name="karte_delete")
+     * @Route("/delete/{id}", name="karte_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)

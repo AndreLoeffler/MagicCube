@@ -36,17 +36,11 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('karte') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('karte_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+<ul class="record_actions">
+    <li><a href="{{ path('karte') }}">zurück</a></li>
+    {% if is_granted('ROLE_ADMIN') %}
+	    <li><a href="{{ path('karte_edit', { 'id': entity.id }) }}">Bearbeiten</a></li>
+	    <li>{{ form(delete_form) }}</li>
+    {% endif %}
 </ul>
 {% endblock %}
