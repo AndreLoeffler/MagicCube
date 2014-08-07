@@ -35,30 +35,64 @@
 				</div>
 			</div>
 			<div class="col-md-3 navigation">
-				<div class="well">
-					<nav>
-						<ul class="nav nav-pills nav-stacked">
-							<li><a class=" main-menu" href="{{ path('home') }}"><button type="button" class="btn">Home</button></a></li>
-							{% if is_granted('ROLE_USER') %}
-								{# is the viewer logged in? #}
-								{% include "BinaerpilotenMagicBundle:Menu:user.html.twig" %}
-								{% include "BinaerpilotenMagicBundle:Menu:karten.html.twig" %}
-							{% else %}
-								{# if not, present login-form #}
-								{% include "BinaerpilotenMagicBundle:Menu:login.html.twig" %}
-							{% endif %}
-							{% if is_granted('ROLE_ADMIN') %}
-								{# is he logged in and even admin? #}
-								{% include "BinaerpilotenMagicBundle:Menu:admin.html.twig" %}
-							{% endif %}
-						</ul>
-					</nav>
-					<nav class="side-menu">
-						<ul class="nav">
-							<li><a href="{{ path('impressum') }}">Impressum</a></li>
-						</ul>
-					</nav>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well">
+							<nav>
+								<ul class="nav nav-pills nav-stacked">
+									<li><a class="main-menu" href="{{ path('home') }}"><button type="button" class="btn">Home</button></a></li>
+									{% if is_granted('ROLE_USER') %}
+										{# is the viewer logged in? #}
+										{% include "BinaerpilotenMagicBundle:Menu:user.html.twig" %}
+										{% include "BinaerpilotenMagicBundle:Menu:karten.html.twig" %}
+									{% else %}
+										{# if not, present login-form #}
+										{% include "BinaerpilotenMagicBundle:Menu:login.html.twig" %}
+									{% endif %}
+									{% if is_granted('ROLE_ADMIN') %}
+										{# is he logged in and even admin? #}
+										{% include "BinaerpilotenMagicBundle:Menu:admin.html.twig" %}
+									{% endif %}
+								</ul>
+							</nav>
+							<nav class="side-menu">
+								<ul class="nav">
+									<li><a href="{{ path('impressum') }}">Impressum</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
 				</div>
+				{% if is_granted('ROLE_ADMIN') %}
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well">
+							<nav>
+								<ul class="nav nav-pills nav-stacked">
+									<li>Admin Aktionen:</li>
+									{% block admin_menu %}
+									{% endblock %}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% if is_granted('ROLE_SUPERADMIN') %}
+				<div class="row">
+					<div class="col-md-12">
+						<div class="well">
+							<nav>
+								<ul class="nav nav-pills nav-stacked">
+									<li>Super-Admin Aktionen:</li>
+									{% block superadmin_menu %}
+									{% endblock %}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				{% endif %}
 			</div>
 		</div>
 	</div>

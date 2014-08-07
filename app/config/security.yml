@@ -22,7 +22,7 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register/confirm, role: ROLE_USER }
-        - { path: ^/register/, role: ROLE_ADMIN }
+        - { path: ^/register/, role: ROLE_SUPERADMIN }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/user/list, role: ROLE_ADMIN }
@@ -32,7 +32,9 @@ security:
         - { path: ^/farbe, role: ROLE_ADMIN }
         - { path: ^/seltenheit, role: ROLE_ADMIN }
         - { path: ^/typ, role: ROLE_ADMIN }
+        - { path: ^/user/promote, role: ROLE_SUPERADMIN }
+        - { path: ^/user/demote, role: ROLE_SUPERADMIN }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPERADMIN: ROLE_ADMIN

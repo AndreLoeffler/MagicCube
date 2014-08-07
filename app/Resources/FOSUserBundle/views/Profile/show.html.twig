@@ -1,5 +1,77 @@
 {% extends "BinaerpilotenMagicBundle::index.html.twig" %}
 
+{% set self = (app.user.id == user.id) %}
+
 {% block fos_user_content %}
-{% include "BinaerpilotenMagicBundle:Main/User:show_content.html.twig" %}
+<div class="row">
+	<div class="col-md-12">
+	    <h1>Nutzername: {{ user.username }}{% if self %}
+			<a class="small" href="{{ path('fos_user_profile_edit') }}">Daten ändern</a>
+		{% endif %}</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+	    <table class="record_properties table">
+	        <tbody>
+	            <tr>
+	                <th>Name</th>
+	                <td>{{ user.name }}</td>
+	            </tr>
+	            <tr>
+	                <th>Email</th>
+	                <td>{{ user.email }}</td>
+	            </tr>
+	            <tr>
+	                <th>Letzter Login</th>
+	                <td>{{ user.lastLogin|date('d.m.Y') }}</td>
+	            </tr>
+	            <tr>
+	                <th>Rollen</th>
+	                <td>
+					{% for f in user.roles %}
+						<span class="btn btn-default">{{ f }}</span>
+	                {% endfor %}
+	                </td>
+	            </tr>
+	            {% if self %}
+	            <tr>
+	            	<th>Passwort</th>
+					<td><a href="{{ path('fos_user_change_password') }}">ändern</a></td>
+	            </tr>
+				{% endif %}
+	        </tbody>
+	    </table>
+	</div>
+	<div class="col-md-6">
+		{% if is_granted('ROLE_SUPERADMIN') %}
+
+		{% endif %}
+	</div>
+</div>
 {% endblock fos_user_content %}
+
+{% block admin_menu %}
+		<li>
+			<a class="main-menu" href="{{ path('user') }}">
+				<button type="button" class="btn">Alle Spieler</button>
+			</a>
+		</li>
+{% endblock %}
+
+{% block superadmin_menu %}
+		<li>
+			<a class="main-menu" href="{{ path('user_promote', { 'name': user.username}) }}">
+				<button type="button" class="btn dropdown-toggle">
+					<span class="glyphicon glyphicon-chevron-up pull-left"></span> Aufwerten
+				</button>
+			</a>
+		</li>
+		<li>
+			<a class="main-menu" href="{{ path('user_demote', { 'name': user.username}) }}">
+				<button type="button" class="btn dropdown-toggle">
+					<span class="glyphicon glyphicon-chevron-down pull-left"></span> Abwerten
+				</button>
+			</a>
+		</li>
+{% endblock %}
