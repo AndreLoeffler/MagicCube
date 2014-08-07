@@ -84,7 +84,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Mana', {% for k,v in mana[0] %}'{{ k }}',{% endfor %}],
           {% for zahl in mana %}
-          	[{{ loop.index }}, {% for z in zahl %}{{ z.count }},{% endfor %}], 
+          	[{{ loop.index-1 }}, {% for z in zahl %}{{ z.count }},{% endfor %}], 
           {% endfor %}
         ]);
 

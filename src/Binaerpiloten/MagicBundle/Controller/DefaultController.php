@@ -165,7 +165,7 @@ class DefaultController extends Controller
     		foreach ($k->getFarbe() as $f) {
     			$ind = $k->getMana();
     			if ($ind > 6) $ind = 7;
-    			$entities[$ind][$f->getName()]['count'] += 1 / sizeof($k->getFarbe());
+    			$entities[$ind][$f->getName()]['count'] += (1 / sizeof($k->getFarbe())) * $k->getAnzahl();
     		}
     	}
     	return $entities;
