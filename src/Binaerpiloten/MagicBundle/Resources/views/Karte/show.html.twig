@@ -1,46 +1,61 @@
 {% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
 
 {% block content %}
-    <h1>Karte</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Anzahl</th>
-                <td>{{ entity.anzahl }}</td>
-            </tr>
-            <tr>
-                <th>Farbe</th>
-                <td>
-                {% for f in entity.farbe %}
-					<span class="btn btn-default">{{ f }}</span>
-                {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <th>Typ</th>
-                <td>
-                {% for t in entity.typ %}
-					<span class="btn btn-default">{{ t }}</span>
-                {% endfor %}
-                </td>
-            </tr>
-            <tr>
-            	<th>Seltehheit</th>
-            	<td><span class="btn btn-default">{{ entity.seltenheit }}</span></td>
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+	<div class="col-md-6">
+		<span class="centering col-md-12">Karte:</span>
+		<h1>{{ entity.name }}</h1>
+	</div>
+	<div class="col-md-6">
+		<table class="table">
+		  <tr>
+		    <td>Anzahl: </td>
+		    <td>{{ entity.anzahl }}</td>
+		  </tr>
+		  <tr>
+		    <td>Umgewandelte Manakosten: </td>
+		    <td>{{ entity.mana }}</td>
+		  </tr>
+		</table>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4 show-listing well">
+		<h4>Farbe</h4>
+		<ul>
+        {% for f in entity.farbe %}
+			<li><span class="btn btn-default">{{ f }}</span></li>
+	    {% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-4 show-listing well">
+		<h4>Typ</h4>
+		<ul>
+        	{% for t in entity.typ %}
+				<li><span class="btn btn-default">{{ t }}</span></li>
+        	{% endfor %}
+        </ul>
+	</div>
+	<div class="col-md-4 show-listing well">
+		<h4>Seltenheit</h4>
+		<span class="btn btn-default">{{ entity.seltenheit }}</span>
+	</div>
+</div>
 
 <ul class="record_actions">
-    <li><a href="{{ path('karte') }}">zurück</a></li>
-    {% if is_granted('ROLE_ADMIN') %}
-	    <li><a href="{{ path('karte_edit', { 'id': entity.id }) }}">Bearbeiten</a></li>
-	    <li>{{ form(delete_form) }}</li>
-    {% endif %}
+    
 </ul>
+{% endblock %}
+
+{% block user_menu %}
+	{{ menuButton('zurück','karte')|raw }}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Bearbeiten','karte_edit', { 'id': entity.id })|raw }}
+    <li>
+	    {{ form_start(delete_form, { 'attr': {'class': 'main-menu'}}) }}
+	    {{ form_widget(delete_form.submit, { 'attr': {'class': 'btn'}}) }}
+	    {{ form_end(delete_form) }}
+    </li>
 {% endblock %}

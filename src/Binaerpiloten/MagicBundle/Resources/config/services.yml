@@ -25,3 +25,8 @@ services:
         arguments: [  ]
         tags:
             - { name: twig.extension }
+    binaerpiloten.twig.menuButton_extension:
+        class: Binaerpiloten\MagicBundle\Twig\MenuButtonExtension
+        arguments: [ @router ]
+        tags:
+            - { name: twig.extension }            

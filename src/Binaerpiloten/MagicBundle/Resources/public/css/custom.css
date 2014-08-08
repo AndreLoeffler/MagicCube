@@ -28,3 +28,10 @@ span.quelle {
 h1,h2,h3,h4,h5 {
 	text-align: center;
 }
+
+.show-listing {
+	min-height: 200px;
+}
+.centering {
+	text-align: center;
+}
