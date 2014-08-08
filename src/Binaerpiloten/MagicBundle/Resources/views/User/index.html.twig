@@ -24,3 +24,7 @@
         </tbody>
     </table>
 {% endblock %}
+
+{% block superadmin_menu %}
+	{{ menuButton('Neuer User','fos_user_registration_register')|raw }}
+{% endblock %}

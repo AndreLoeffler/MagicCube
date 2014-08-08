@@ -1,6 +1,7 @@
 {% extends "BinaerpilotenMagicBundle::index.html.twig" %}
 
 {% block fos_user_content %}
+{{ form_start(form, { 'attr': {'id': 'user-new-form'}}) }}
 <div class="row">
 	<div class="col-md-12">
 	    <h1>Nutzername: {{ form_widget(form.username) }}</h1>
@@ -20,18 +21,21 @@
 	            </tr>
 	            <tr>
 	                <th>Passwort</th>
-            		<td>{{ form_widget(form.current_password) }}</td>
+            		<td>{{ form_widget(form.plainPassword.first) }}</td>
+	                <th>Wiederholen</th>
+            		<td>{{ form_widget(form.plainPassword.second) }}</td>
 	            </tr>
 	        </tbody>
 	    </table>
 	</div>
 </div>
+{{ form_end(form) }}
 {% endblock fos_user_content %}
 
 {% block admin_menu %}
-		<li>
-			<a class="main-menu" href="{{ path('user') }}">
-				<button type="button" class="btn">Alle User</button>
-			</a>
-		</li>
+	{{ menuButton('Alle User','user')|raw }}
+{% endblock %}
+
+{% block superadmin_menu %}
+	{{ menuButton('Erstellen','',{},'user-new-form')|raw }}
 {% endblock %}
