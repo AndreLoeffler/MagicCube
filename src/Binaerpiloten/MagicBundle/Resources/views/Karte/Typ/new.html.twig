@@ -1,15 +1,26 @@
 {% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
 
 {% block content %}
-    <h1>Typ creation</h1>
+    {{ form_start(form, { 'attr': {'id': 'typ-new-form'}}) }}
+    <div class="row">
+    	<div class="col-md-6">
+    		<span class="centering col-md-12">Typ erstellen:</span>
+			<h1>{{ form_widget(form.name) }}</h1>
+    	</div>
+    	<div class="col-md-6">
+    		<table class="table">
+    			<tr>
+    			
+    			</tr>
+    		</table>
+    	</div>
+    </div>
 
-    {{ form(form) }}
+    <div class="hidden">{{ form_widget(form.submit) }}</div>
+    {{ form_end(form) }}
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('typ') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% block admin_menu %}
+	{{ menuButton('Erstellen','',{},'typ-new-form')|raw }}
+	{{ menuButton('Übersicht','farbe')|raw }}
 {% endblock %}
