@@ -3,22 +3,25 @@
 {% form_theme form 'BinaerpilotenMagicBundle:Main/Form:kartefields.html.twig' %}
 
 {% block content %}
-    <h1>Neue Karte anlegen</h1>
-
-    {{ form_start(form) }}
-<table class="well">
-  <tr>
-    <td>Name: </td>
-    <td>{{ form(form.name) }}</td>
-  </tr>
-  <tr>
-    <td>Anzahl: </td>
-    <td>{{ form_widget(form.anzahl) }}</td>
-  </tr>
-  <tr>
-    <td>Umgewandelte Manakosten: </td>
-    <td>{{ form_widget(form.mana) }}</td>
-  </tr>
+    {{ form_start(form, { 'attr': {'id': 'karte-new-form'}}) }}
+    <div class="row">
+    	<div class="col-md-6">
+    		<span class="centering col-md-12">Karte erstellen:</span>
+			<h1>{{ form_widget(form.name) }}</h1>
+    	</div>
+    	<div class="col-md-6">
+    		<table class="table">
+			  <tr>
+			    <th>Anzahl: </th>
+			    <td>{{ form_widget(form.anzahl) }}</td>
+			  </tr>
+			  <tr>
+			    <th>Umgewandelte Manakosten: </th>
+			    <td>{{ form_widget(form.mana) }}</td>
+			  </tr>
+    		</table>
+    	</div>
+    </div>
 </table>
 <div class="row">
 	<div class="col-md-4 form-listing well">
@@ -36,8 +39,11 @@
 </div>
 
     
-<ul class="record_actions">
-    <li><a href="{{ path('karte') }}">Übersicht</a></li>
-</ul>
-{{ form_end(form) }}
+<div class="hidden">{{ form_widget(form.submit) }}</div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Erstellen','',{},'karte-new-form')|raw }}
+	{{ menuButton('Übersicht','karte')|raw }}
 {% endblock %}

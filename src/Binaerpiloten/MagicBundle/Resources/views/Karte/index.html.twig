@@ -45,13 +45,8 @@
         {% endfor %}
         </tbody>
     </table>
-{% if is_granted('ROLE_ADMIN') %}
-	<ul>
-        <li>
-            <a href="{{ path('karte_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-{% endif %}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Neue Karte', 'karte_new')|raw }}
 {% endblock %}

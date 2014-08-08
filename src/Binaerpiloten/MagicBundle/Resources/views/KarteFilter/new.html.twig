@@ -9,7 +9,7 @@
 
 {% block content %}
 <h1>Filter creation</h1>
-{{ form_start(form) }}
+{{ form_start(form, { 'attr': {'id': 'kartefilter-new-form'}}) }}
 
 	<div>
 		{{ form_errors(form) }}
@@ -46,6 +46,11 @@
 		</div>
 	</div>
 	
+<div class="hidden">{{ form_widget(form.submit) }}</div>	
 {{ form_end(form) }}
 
+{% endblock %}
+
+{% block user_menu %}
+	{{ menuButton('Suchen','',{},'kartefilter-new-form')|raw }}
 {% endblock %}
