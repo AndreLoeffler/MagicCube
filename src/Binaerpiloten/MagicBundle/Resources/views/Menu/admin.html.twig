@@ -48,6 +48,19 @@
 			<li>
 				<div class="btn-group secondary">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Edition
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('edition') }}">Alle Editionen</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('edition_new') }}">Neue Edition</a></li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						Nutzer
 						<span class="caret"></span>
 					</button>
