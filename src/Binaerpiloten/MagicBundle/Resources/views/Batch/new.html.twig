@@ -1,0 +1,19 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+	{{ form_start(form, { 'attr': {'id': 'batch-new-form'}}) }}
+    <h1>Batch creation</h1>
+    <div class="row">
+    	<div class="col-md-12">
+    		<span class="centering col-md-12">Neue BatchItems anlegen: (trennen durch "|")</span>
+			<h1>{{ form_widget(form.names) }}</h1>
+    	</div>
+    </div>
+    <div class="hidden">{{ form_widget(form.submit) }}</div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Alle anlegen','',{},'batch-new-form')|raw }}
+	{{ menuButton('Übersicht','batchitem')|raw }}
+{% endblock %}

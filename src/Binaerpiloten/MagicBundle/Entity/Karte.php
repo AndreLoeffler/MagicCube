@@ -62,6 +62,12 @@ class Karte
      * @ORM\JoinColumn(name="karte_edition", referencedColumnName="id")
      */
     private $edition;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="BatchItem", cascade="remove")
+     * @ORM\JoinColumn(name="batch_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     **/
+    private $batchItem;
 
     /**
      * Get id
@@ -301,5 +307,28 @@ class Karte
     public function getEdition()
     {
         return $this->edition;
+    }
+
+    /**
+     * Set batchItem
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\BatchItem $batchItem
+     * @return Karte
+     */
+    public function setBatchItem(\Binaerpiloten\MagicBundle\Entity\BatchItem $batchItem = null)
+    {
+        $this->batchItem = $batchItem;
+
+        return $this;
+    }
+
+    /**
+     * Get batchItem
+     *
+     * @return \Binaerpiloten\MagicBundle\Entity\BatchItem 
+     */
+    public function getBatchItem()
+    {
+        return $this->batchItem;
     }
 }

@@ -1,0 +1,38 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    <h1>BatchItem list</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>In Bearbeitung?</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('batchitem_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>
+                {%  if entity.working %} <span style="color: red;">WORKING</span>{% endif %}
+                </td>
+                <td>
+                <ul>
+                    <li><a href="{{ path('batchitem_delete', { 'id': entity.id }) }}">löschen</a></li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('batch_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

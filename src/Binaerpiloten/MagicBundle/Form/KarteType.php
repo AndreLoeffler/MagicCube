@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityRepository;
 
 class KarteType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -38,6 +38,11 @@ class KarteType extends AbstractType
             		'multiple' => false,
             		'expanded' => true,
             		'class' => 'BinaerpilotenMagicBundle:Edition')
+            )
+            ->add('batchitem','entity',array(
+            		'multiple' => false,
+            		'expanded' => true,
+            		'class' => 'BinaerpilotenMagicBundle:BatchItem')
             )
         ;
     }

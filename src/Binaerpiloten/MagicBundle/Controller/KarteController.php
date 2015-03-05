@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Binaerpiloten\MagicBundle\Entity\Karte;
 use Binaerpiloten\MagicBundle\Form\KarteType;
+use Binaerpiloten\MagicBundle\Entity\BatchItem;
 
 /**
  * Karte controller.
@@ -53,8 +54,22 @@ class KarteController extends Controller
             
             $em->persist($entity);
             $em->flush();
+            $batchitem = $entity->getBatchItem();
+            
+            $nextId = -1;
+            
+            if ($batchitem != null) {
+            	$em->remove($batchitem);
+            	$em->flush();
+            	$nextId = $this->getNextBatchItemId();
+            }
+            
 
-            return $this->redirect($this->generateUrl('karte_new'));
+            if ($nextId > -1) {
+            	return $this->redirect($this->generateUrl('karte_new_batch', array('id' => intval($nextId))));
+            } else {
+            	return $this->redirect($this->generateUrl('karte'));
+            }
         }
 
         return array(
@@ -244,5 +259,45 @@ class KarteController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    
+    /**
+     * Displays a form to create a new Karte entity.
+     *
+     * @Route("/new/{id}", name="karte_new_batch")
+     * @Method("GET")
+     * @Template("BinaerpilotenMagicBundle:Karte:new.html.twig")
+     */
+    public function newBatchAction($id)
+    {
+    	$entity = new Karte();
+    	
+    	$em = $this->getDoctrine()->getManager();
+    	$batchItem = $em->getRepository('BinaerpilotenMagicBundle:BatchItem')->find($id);
+    	$entity->setName($batchItem->getName());
+    	$entity->setBatchItem($batchItem);
+    	
+    	$form   = $this->createCreateForm($entity);
+    
+    	return array(
+    			'entity' => $entity,
+    			'form'   => $form->createView(),
+    	);
+    }
+    
+    private function getNextBatchItemId() {
+    	$em = $this->getDoctrine()->getEntityManager();
+    	$qb = $em->createQueryBuilder();
+    	
+    	$qb->select('b.id')
+    		->from('BinaerpilotenMagicBundle:BatchItem', 'b')
+    		->where('b.working = false')
+    		->orderBy('b.id', 'ASC')
+    		->setMaxResults(1);
+    	
+    	$results = $qb->getQuery()->getResult();
+
+    	if (sizeof($results) > 0) return $results[0]['id'];
+    	else return -1;
     }
 }

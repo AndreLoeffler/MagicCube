@@ -23,3 +23,9 @@ kartefilter:
 edition:
     resource: "@BinaerpilotenMagicBundle/Controller/EditionController.php"
     type: annotation
+batch:
+    resource: "@BinaerpilotenMagicBundle/Controller/BatchController.php"
+    type: annotation
+batchitem:
+    resource: "@BinaerpilotenMagicBundle/Controller/BatchItemController.php"
+    type: annotation

@@ -8,8 +8,6 @@
     	<div class="col-md-6">
     		<span class="centering col-md-12">Karte erstellen:</span>
 			<h1>{{ form_widget(form.name) }}</h1>
-    	</div>
-    	<div class="col-md-6">
     		<table class="table">
 			  <tr>
 			    <th>Anzahl: </th>
@@ -20,6 +18,9 @@
 			    <td>{{ form_widget(form.mana) }}</td>
 			  </tr>
     		</table>
+    	</div>
+    	<div class="col-md-6">
+    		<img class="col-md-10" src="http://mtgimage.com/card/{{ entity.name }}.jpg" alt="{{ entity.name }}">
     	</div>
     </div>
 </table>
@@ -41,6 +42,9 @@
 	<div class="col-md-4 form-listing well">
 		<h4>Edition</h4>
 		{{ form_widget(form.edition) }}
+	</div>
+	<div class="hidden">
+		{{ form_widget(form.batchitem) }}
 	</div>
 </div>
     
