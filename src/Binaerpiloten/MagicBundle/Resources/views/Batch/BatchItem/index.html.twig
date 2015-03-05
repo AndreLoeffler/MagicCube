@@ -16,7 +16,7 @@
             <tr>
                 <td><a href="{{ path('batchitem_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>
-                {%  if entity.working %} <span style="color: red;">WORKING</span>{% endif %}
+                {%  if entity.working %}von <span style="color: red;">{{ entity.working.name }}</span>{% endif %}
                 </td>
                 <td>
                 <ul>

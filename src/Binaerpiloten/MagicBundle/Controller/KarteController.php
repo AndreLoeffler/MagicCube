@@ -291,7 +291,7 @@ class KarteController extends Controller
     	
     	$qb->select('b.id')
     		->from('BinaerpilotenMagicBundle:BatchItem', 'b')
-    		->where('b.working = false')
+    		->where('b.working is null')
     		->orderBy('b.id', 'ASC')
     		->setMaxResults(1);
     	

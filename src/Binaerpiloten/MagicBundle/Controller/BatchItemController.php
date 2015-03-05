@@ -54,6 +54,9 @@ class BatchItemController extends Controller
             throw $this->createNotFoundException('Unable to find BatchItem entity.');
         }
 
+        $entity->setWorking($this->get('security.context')->getToken()->getUser());
+        $em->persist($entity);
+        $em->flush();
         return $this->redirect($this->generateUrl('karte_new_batch', array('id' => $entity->getId())));
     }
 

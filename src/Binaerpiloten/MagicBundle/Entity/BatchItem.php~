@@ -70,33 +70,10 @@ class BatchItem
 
     public function __construct($n) {
     	$this->name = $n;
-    	$this->working = null;
+    	$this->working = false;
     }
     
     public function __toString() {
     	return $this->getName()." (".$this->getId().")";
-    }
-
-    /**
-     * Set working
-     *
-     * @param \Binaerpiloten\MagicBundle\Entity\User $working
-     * @return BatchItem
-     */
-    public function setWorking(\Binaerpiloten\MagicBundle\Entity\User $working = null)
-    {
-        $this->working = $working;
-
-        return $this;
-    }
-
-    /**
-     * Get working
-     *
-     * @return \Binaerpiloten\MagicBundle\Entity\User 
-     */
-    public function getWorking()
-    {
-        return $this->working;
     }
 }
