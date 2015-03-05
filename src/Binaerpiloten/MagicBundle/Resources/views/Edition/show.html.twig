@@ -1,0 +1,28 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    <div class="row">
+    	<div class="col-md-6">
+    		<span class="centering col-md-12">Edition:</span>
+			<h1>{{ entity.name }}</h1>
+    	</div>
+    	<div class="col-md-6">
+    		<table class="table">
+    			<tr>
+    				<th>Kürzel:</th>
+    				<td>{{ entity.kuerzel }}</td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Bearbeiten','edition_edit',{'id': entity.id})|raw }}
+	{{ menuButton('Übersicht','edition')|raw }}
+	<li>
+	    {{ form_start(delete_form, { 'attr': {'class': 'main-menu'}}) }}
+	    	{{ form_widget(delete_form.submit, { 'attr': {'class': 'btn'}}) }}
+	    {{ form_end(delete_form) }}
+    </li>
+{% endblock %}

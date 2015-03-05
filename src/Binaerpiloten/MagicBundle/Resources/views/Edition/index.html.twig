@@ -1,0 +1,37 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    <h1>Edition list</h1>
+
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Kuerzel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('edition_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.kuerzel }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('edition_show', { 'id': entity.id }) }}">anzeigen</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('edition_edit', { 'id': entity.id }) }}">bearbeiten</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Neue Edition', 'edition_new')|raw }}
+{% endblock %}

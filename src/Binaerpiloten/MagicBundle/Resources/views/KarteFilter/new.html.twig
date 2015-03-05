@@ -16,6 +16,7 @@
 		{{ form_errors(form.typ) }}
 		{{ form_errors(form.farbe) }}
 		{{ form_errors(form.seltenheit) }}
+		{{ form_errors(form.edition) }}
 	</div>
 	
 	<h2>Die Spieler</h2>
@@ -31,6 +32,7 @@
 				<li class="active"><a href="#typ" data-toggle="tab">Typ</a></li>
 				<li><a href="#farbe" data-toggle="tab">Farbe</a></li>
 				<li><a href="#seltenheit" data-toggle="tab">Seltenheit</a></li>
+				<li><a href="#edition" data-toggle="tab">Edition</a></li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="typ">
@@ -41,6 +43,9 @@
 				</div>
 				<div class="tab-pane" id="seltenheit">
 					{{ form_widget(form.seltenheit) }}
+				</div>
+				<div class="tab-pane" id="edition">
+					{{ form_widget(form.edition) }}
 				</div>
 			</div>
 		</div>

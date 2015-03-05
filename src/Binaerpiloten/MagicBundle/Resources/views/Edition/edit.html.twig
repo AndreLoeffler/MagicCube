@@ -1,0 +1,32 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    {{ form_start(edit_form, { 'attr': {'id': 'edition-edit-form'}}) }}
+    <div class="row">
+    	<div class="col-md-6">
+    		<span class="centering col-md-12">Edition bearbeiten:</span>
+			<h1>{{ form_widget(edit_form.name) }}</h1>
+    	</div>
+    	<div class="col-md-6">
+    		<table class="table">
+    			<tr>
+    				<th>Darstellung:</th>
+    				<td>{{ form_widget(edit_form.kuerzel) }}</td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+
+    <div class="hidden">{{ form_widget(edit_form.submit) }}</div>
+    {{ form_end(edit_form) }}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Aktualisieren','',{},'edition-edit-form')|raw }}
+	{{ menuButton('Übersicht','edition')|raw }}
+	<li>
+	    {{ form_start(delete_form, { 'attr': {'class': 'main-menu'}}) }}
+	    	{{ form_widget(delete_form.submit, { 'attr': {'class': 'btn'}}) }}
+	    {{ form_end(delete_form) }}
+    </li>
+{% endblock %}

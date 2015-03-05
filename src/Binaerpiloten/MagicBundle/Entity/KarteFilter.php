@@ -35,6 +35,11 @@ class KarteFilter
      * @ORM\ManyToMany(targetEntity="Seltenheit")
      */
     protected $seltenheit;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Edition")
+     */
+    protected $edition;
 
 
     /**
@@ -54,6 +59,7 @@ class KarteFilter
         $this->typ = new \Doctrine\Common\Collections\ArrayCollection();
         $this->farbe = new \Doctrine\Common\Collections\ArrayCollection();
         $this->seltenheit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->edition = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -153,5 +159,38 @@ class KarteFilter
     public function getSeltenheit()
     {
         return $this->seltenheit;
+    }
+
+    /**
+     * Add edition
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Edition $edition
+     * @return KarteFilter
+     */
+    public function addEdition(\Binaerpiloten\MagicBundle\Entity\Edition $edition)
+    {
+        $this->edition[] = $edition;
+
+        return $this;
+    }
+
+    /**
+     * Remove edition
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Edition $edition
+     */
+    public function removeEdition(\Binaerpiloten\MagicBundle\Entity\Edition $edition)
+    {
+        $this->edition->removeElement($edition);
+    }
+
+    /**
+     * Get edition
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEdition()
+    {
+        return $this->edition;
     }
 }

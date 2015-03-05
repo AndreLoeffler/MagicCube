@@ -19,4 +19,7 @@ seltenheit:
     type: annotation
 kartefilter:
     resource: "@BinaerpilotenMagicBundle/Controller/KarteFilterController.php"
-    type: annotation    
+    type: annotation
+edition:
+    resource: "@BinaerpilotenMagicBundle/Controller/EditionController.php"
+    type: annotation

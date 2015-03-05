@@ -33,6 +33,12 @@ class KarteFilterType extends AbstractType
             		'required' => false,
             		'class' => 'BinaerpilotenMagicBundle:Seltenheit',
             ))
+            ->add('edition','entity',array(
+            		'multiple' => true,
+            		'expanded' => true,
+            		'required' => false,
+            		'class' => 'BinaerpilotenMagicBundle:Edition',
+            ))
         ;
     }
     

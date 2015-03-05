@@ -1,0 +1,27 @@
+{% extends 'BinaerpilotenMagicBundle::index.html.twig' %}
+
+{% block content %}
+    {{ form_start(form, { 'attr': {'id': 'edition-new-form'}}) }}
+    <div class="row">
+    	<div class="col-md-6">
+    		<span class="centering col-md-12">Seltenheit erstellen:</span>
+			<h1>{{ form_widget(form.name) }}</h1>
+    	</div>
+    	<div class="col-md-6">
+    		<table class="table">
+    			<tr>
+    				<th>Darstellung:</th>
+    				<td>{{ form_widget(form.kuerzel) }}</td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+
+    <div class="hidden">{{ form_widget(form.submit) }}</div>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block admin_menu %}
+	{{ menuButton('Erstellen','',{},'edition-new-form')|raw }}
+	{{ menuButton('Übersicht','edition')|raw }}
+{% endblock %}

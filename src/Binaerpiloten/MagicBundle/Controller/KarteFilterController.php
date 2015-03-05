@@ -126,6 +126,19 @@ class KarteFilterController extends Controller
     		}
     		$query->andWhere($rarstring);
     	}
+
+    	$edition = $filter->getEdition()->toArray();
+    	if (sizeof($edition)>0) {
+    		$l = 0;
+    		$edistring = "";
+    		foreach ($edition as $t) {
+    			$edistring .= "s.edition = :edi".$l;
+    			$parameters[':edi'.$l] = $edition[$l];
+    			$l++;
+    			if (sizeof($edition) > $l) $edistring .= " OR ";
+    		}
+    		$query->andWhere($edistring);
+    	}
     	
     	$query->setParameters($parameters);
     	$entities = $query->getQuery()->getResult();

@@ -56,6 +56,12 @@ class Karte
      * @ORM\JoinColumn(name="karte_seltenheit", referencedColumnName="id")
      */
     private $seltenheit;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Edition", inversedBy="karte_id")
+     * @ORM\JoinColumn(name="karte_edition", referencedColumnName="id")
+     */
+    private $edition;
 
     /**
      * Get id
@@ -272,5 +278,28 @@ class Karte
     public function getMana()
     {
         return $this->mana;
+    }
+
+    /**
+     * Set edition
+     *
+     * @param \Binaerpiloten\MagicBundle\Entity\Edition $edition
+     * @return Karte
+     */
+    public function setEdition(\Binaerpiloten\MagicBundle\Entity\Edition $edition = null)
+    {
+        $this->edition = $edition;
+
+        return $this;
+    }
+
+    /**
+     * Get edition
+     *
+     * @return \Binaerpiloten\MagicBundle\Entity\Edition 
+     */
+    public function getEdition()
+    {
+        return $this->edition;
     }
 }
