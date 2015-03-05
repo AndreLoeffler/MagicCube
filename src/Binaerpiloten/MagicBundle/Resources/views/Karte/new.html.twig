@@ -20,7 +20,9 @@
     		</table>
     	</div>
     	<div class="col-md-6">
+    	{% if entity.batchitem %}
     		<img class="col-md-10" src="http://mtgimage.com/card/{{ entity.name }}.jpg" alt="{{ entity.name }}">
+    	{% endif %}
     	</div>
     </div>
 </table>
@@ -53,6 +55,42 @@
 {% endblock %}
 
 {% block admin_menu %}
+	<li class="main-menu"><button class='btn'>Lock läuft ab in: <span id="timer">120</span></button></li>
 	{{ menuButton('Erstellen','',{},'karte-new-form')|raw }}
 	{{ menuButton('Übersicht','karte')|raw }}
+{% endblock %}
+
+{% block superadmin_menu %}
+{% if entity.batchitem %}
+	{{ menuButton('Lock lösen','batchitem_free_superadmin',{'id': entity.batchitem.id },'')|raw }}
+{% endif %}
+{% endblock %}
+
+{% block tplscript %}
+{% if entity.batchitem %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var counter = 0;
+	setInterval(function () {
+	  $("#timer").text(120 - ++counter);
+	  if (counter > 120) {
+			$.get(
+					Routing.generate('batchitem_free', {'id': {{ entity.batchitem.id }} }), 
+					<!-- doing the redirect-->
+					function(data){ window.location.href = data }
+			);
+	  }
+	}, 1000);
+});
+$(window).bind('beforeunload', function(){
+		$.get(
+			Routing.generate('batchitem_free', {'id': {{ entity.batchitem.id }} }), 
+			<!-- not doing the redirect as user is leaving anyway-->
+			function(){}
+		);
+	});
+</script>
+{% endif %}
 {% endblock %}

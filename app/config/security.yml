@@ -32,6 +32,7 @@ security:
         - { path: ^/farbe, role: ROLE_ADMIN }
         - { path: ^/seltenheit, role: ROLE_ADMIN }
         - { path: ^/typ, role: ROLE_ADMIN }
+        - { path: ^/batch*, role: ROLE_ADMIN }
         - { path: ^/user/promote, role: ROLE_SUPERADMIN }
         - { path: ^/user/demote, role: ROLE_SUPERADMIN }
 

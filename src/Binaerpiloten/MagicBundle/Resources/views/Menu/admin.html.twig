@@ -5,7 +5,19 @@
 			<span class="glyphicon glyphicon-chevron-left pull-left"></span> Admin
 		</button>
 		<ul class="dropdown-menu pull-right" role="menu">
-			<li><a href="{{ path('karte_new') }}">Neue Karte</a></li>
+			<li>
+				<div class="btn-group secondary">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						Karten
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ path('karte_new') }}">Neue Karte</a></li>
+						<li class="divider"></li>
+						<li><a href="{{ path('batchitem') }}">Batchitems anzeigen</a></li>
+					</ul>
+				</div>
+			</li>
 			<li>
 				<div class="btn-group secondary">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -71,7 +83,6 @@
 					</ul>
 				</div>
 			</li>
-			<li><a href="{{ path('batchitem') }}">Batchitems anzeigen</a></li>
 		</ul>
 	</div>
 </li>

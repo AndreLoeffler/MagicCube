@@ -4,6 +4,7 @@ namespace Binaerpiloten\MagicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -23,7 +24,7 @@ class BatchItemController extends Controller
     /**
      * Lists all BatchItem entities.
      *
-     * @Route("/", name="batchitem")
+     * @Route("/", name="batchitem",options={"expose"=true})
      * @Method("GET")
      * @Template("BinaerpilotenMagicBundle:Batch/BatchItem:index.html.twig")
      */
@@ -32,9 +33,16 @@ class BatchItemController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('BinaerpilotenMagicBundle:BatchItem')->findAll();
+        
+        $deleteForms = array();
+        
+        foreach ($entities as $entity) {
+        	$deleteForms[$entity->getId()] = $this->createDeleteForm($entity->getId())->createView();
+        }
 
         return array(
             'entities' => $entities,
+        	'deleteForms' => $deleteForms,
         );
     }
     /**
@@ -54,7 +62,16 @@ class BatchItemController extends Controller
             throw $this->createNotFoundException('Unable to find BatchItem entity.');
         }
 
-        $entity->setWorking($this->get('security.context')->getToken()->getUser());
+        $work = $entity->getWorking();
+        $user = $this->get('security.context')->getToken()->getUser();
+        
+        if ($work == null) $entity->setWorking($user);
+        
+        if (!$this->get('security.context')->isGranted('ROLE_SUPERADMIN') 
+        	&& $entity->getWorking() !== $user) {
+        	throw $this->createNotFoundException('Lock active for user '.$work->getName().'.');
+        }
+        
         $em->persist($entity);
         $em->flush();
         return $this->redirect($this->generateUrl('karte_new_batch', array('id' => $entity->getId())));
@@ -101,5 +118,42 @@ class BatchItemController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+    /**
+     * Frees locked batch event by timeout. See tplscript-block in Karte->new.html.twig.
+     * SuperAdmin version for Button use. 
+     *
+     * @Route("/free/{id}", name="batchitem_free_superadmin")
+     * @Method("GET")
+     */
+    public function freeSuperAdminAction($id) {
+    	$this->freeLock($id);
+    	
+    	return $this->redirect($this->generateUrl('batchitem'));
+    }
+    
+    /**
+     * Frees locked batch event by timeout. See tplscript-block in Karte->new.html.twig.
+     *
+     * @Route("/free/{id}", name="batchitem_free",options={"expose"=true})
+     * @Method("GET")
+     */
+    public function freeAction($id) {
+    	$this->freeLock($id);
+    	 
+    	// this is just plain stupid... yes, of course, jquery has to handle the redirect,
+    	// so just give it some clumsy string
+    	return new Response($this->generateUrl('batchitem'));
+    }
+    
+    private function freeLock($id) {
+    	$em = $this->getDoctrine()->getManager();
+    	 
+    	$entity = $em->getRepository('BinaerpilotenMagicBundle:BatchItem')->find($id);
+    	 
+    	$entity->setWorking(null);
+    	 
+    	$em->persist($entity);
+    	$em->flush();
     }
 }
