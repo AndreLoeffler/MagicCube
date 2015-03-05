@@ -9,8 +9,6 @@
 	<div class="col-md-6">
 		<span class="centering col-md-12">Karte bearbeiten:</span>
 		<h1>{{ form_widget(form.name) }}</h1>
-	</div>
-	<div class="col-md-6">
 		<table class="table">
 		  <tr>
 		    <td>Anzahl: </td>
@@ -21,6 +19,9 @@
 		    <td>{{ form_widget(form.mana) }}</td>
 		  </tr>
 		</table>
+	</div>
+	<div class="col-md-6">
+		<img class="col-md-10" src="http://mtgimage.com/card/{{ entity.name }}.jpg" alt="{{ entity.name }}">
 	</div>
 </div>
 
