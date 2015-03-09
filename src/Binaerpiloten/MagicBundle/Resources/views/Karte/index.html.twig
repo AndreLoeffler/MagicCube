@@ -53,7 +53,8 @@
 <script type="text/javascript">
 this.imagePreview = function(){	
 	$("a.preview").hover(function(e){
-		$("body").append("<div id='preview'><img src='http://mtgimage.com/card/"+ this.text +".jpg' alt='"+ this.text +"' /></div>");
+		var t = this.text.replace(/'/g,"&#039;");
+		$("body").append('<div id="preview"><img src="http://mtgimage.com/card/'+ t +'.jpg" alt="'+ t +'" /></div>');
 		$("#preview")
 			.css("top",  calcPosTop(e.pageY) + "px")
 			.css("left", calcPosLeft(e.pageX) + "px")

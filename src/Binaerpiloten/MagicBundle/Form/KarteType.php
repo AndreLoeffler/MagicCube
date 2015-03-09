@@ -42,6 +42,7 @@ class KarteType extends AbstractType
             ->add('batchitem','entity',array(
             		'multiple' => false,
             		'expanded' => true,
+            		'required' => false,
             		'class' => 'BinaerpilotenMagicBundle:BatchItem')
             )
         ;
