@@ -123,7 +123,7 @@ class BatchItemController extends Controller
      * Frees locked batch event by timeout. See tplscript-block in Karte->new.html.twig.
      * SuperAdmin version for Button use. 
      *
-     * @Route("/free/{id}", name="batchitem_free_superadmin")
+     * @Route("/free/{id}/admin", name="batchitem_free_superadmin")
      * @Method("GET")
      */
     public function freeSuperAdminAction($id) {
