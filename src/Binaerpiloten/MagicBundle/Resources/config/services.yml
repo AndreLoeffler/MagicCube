@@ -29,4 +29,4 @@ services:
         class: Binaerpiloten\MagicBundle\Twig\MenuButtonExtension
         arguments: [ @router ]
         tags:
-            - { name: twig.extension }            
+            - { name: twig.extension }

@@ -18,18 +18,20 @@
         {% for entity in entities %}
             <tr>
                 <td>
-                {% if is_granted('ROLE_ADMIN') %}
-                	<a href="{{ path('karte_edit', { 'id': entity.id }) }}">{{ entity.name }}</a>
+                	<a href="
+                {%- if is_granted('ROLE_ADMIN') -%}
+                	{{ path('karte_edit', { 'id': entity.id }) -}}
                 {% else %}
-                	<a href="{{ path('karte_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
-                {% endif %}
+                	{{ path('karte_show', { 'id': entity.id }) -}}
+                {%- endif -%}
+                	" class="preview">{{ entity.name }}</a>
                 </td>
                 <td>{{ entity.anzahl }}</td>
                 <td>
                 	<ul>
-                		{% for t in entity.typ %}
+                		{% for t in entity.typ -%}
                 			<li>{{ t }}</li>
-                		{% endfor %}
+                		{%- endfor %}
                 	</ul>
                 </td>
                 <td>
@@ -45,6 +47,54 @@
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block tplscript %}
+<script type="text/javascript">
+this.imagePreview = function(){	
+	$("a.preview").hover(function(e){
+		$("body").append("<div id='preview'><img src='http://mtgimage.com/card/"+ this.text +".jpg' alt='"+ this.text +"' /></div>");
+		$("#preview")
+			.css("top",  calcPosTop(e.pageY) + "px")
+			.css("left", calcPosLeft(e.pageX) + "px")
+			.fadeIn("fast");						
+    },
+	function(){ $("#preview").remove(); }
+    );	
+	$("a.preview").mousemove(function(e){
+		$("#preview")
+			.css("top",  calcPosTop(e.pageY) + "px")
+			.css("left", calcPosLeft(e.pageX) + "px");
+	});			
+};
+
+this.calcPosTop = function(y){
+	var newPos = (y - 10);
+	var screen = $(window).height();
+	var dim = $('#preview').height();
+	if (newPos+dim > screen) newPos = screen - dim;
+	return newPos;
+};
+
+this.calcPosLeft = function(x){
+	var newPos = (x + 30);
+	var screen = $(window).width();
+	var dim = $('#preview').width();
+	if (newPos+dim > screen) newPos = screen - dim;
+	return newPos;
+};
+
+$(document).ready(function(){
+	imagePreview();
+	});
+</script>
+{% endblock %}
+
+{% block tplstyle %}
+<style type="text/css">
+	#preview{ position:absolute; display:none; }
+	#preview img { width: 50%; }	
+</style>
 {% endblock %}
 
 {% block admin_menu %}
