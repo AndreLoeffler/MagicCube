@@ -29,7 +29,7 @@ class BatchItem
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", mappedBy="id")
+     * @ORM\OneToOne(targetEntity="User")
      * @ORM\JoinColumn(name="work_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $working;
